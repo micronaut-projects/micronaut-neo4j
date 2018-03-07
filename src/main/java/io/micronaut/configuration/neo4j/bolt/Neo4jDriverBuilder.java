@@ -13,16 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.particleframework.configuration.neo4j.bolt;
+package io.micronaut.configuration.neo4j.bolt;
 
+import io.micronaut.context.exceptions.ConfigurationException;
+import io.micronaut.core.util.StringUtils;
+import io.micronaut.retry.annotation.Retryable;
 import org.neo4j.driver.v1.AuthToken;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Driver;
 import org.neo4j.driver.v1.GraphDatabase;
 import org.neo4j.driver.v1.exceptions.ServiceUnavailableException;
-import org.particleframework.context.exceptions.ConfigurationException;
-import org.particleframework.core.util.StringUtils;
-import org.particleframework.retry.annotation.Retryable;
+import io.micronaut.context.exceptions.ConfigurationException;
+import io.micronaut.core.util.StringUtils;
+import io.micronaut.retry.annotation.Retryable;
 
 import javax.inject.Singleton;
 import java.net.URI;

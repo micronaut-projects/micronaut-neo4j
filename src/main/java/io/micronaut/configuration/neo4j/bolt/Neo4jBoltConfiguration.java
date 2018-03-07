@@ -13,17 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.particleframework.configuration.neo4j.bolt;
+package io.micronaut.configuration.neo4j.bolt;
 
+import io.micronaut.context.annotation.ConfigurationBuilder;
+import io.micronaut.context.annotation.ConfigurationProperties;
+import io.micronaut.core.util.StringUtils;
+import io.micronaut.core.util.Toggleable;
 import org.neo4j.driver.v1.AuthToken;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Config;
 import org.neo4j.driver.v1.Logger;
-import org.particleframework.configuration.neo4j.bolt.condition.RequiresNeo4j;
-import org.particleframework.context.annotation.ConfigurationBuilder;
-import org.particleframework.context.annotation.ConfigurationProperties;
-import org.particleframework.core.util.StringUtils;
-import org.particleframework.core.util.Toggleable;
+import io.micronaut.configuration.neo4j.bolt.condition.RequiresNeo4j;
+import io.micronaut.context.annotation.ConfigurationBuilder;
+import io.micronaut.context.annotation.ConfigurationProperties;
+import io.micronaut.core.util.StringUtils;
+import io.micronaut.core.util.Toggleable;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;

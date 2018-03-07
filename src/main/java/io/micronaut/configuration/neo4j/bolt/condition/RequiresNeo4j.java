@@ -13,13 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package io.micronaut.configuration.neo4j.bolt.condition;
+
+import io.micronaut.context.annotation.Requires;
+import org.neo4j.driver.v1.Config;
+import io.micronaut.configuration.neo4j.bolt.Neo4jBoltSettings;
+import io.micronaut.context.annotation.Requires;
+
+import java.lang.annotation.*;
+
 /**
  * @author graemerocher
  * @since 1.0
  */
-@Configuration
-@RequiresNeo4j
-package org.particleframework.configuration.neo4j.bolt;
-
-import org.particleframework.configuration.neo4j.bolt.condition.RequiresNeo4j;
-import org.particleframework.context.annotation.Configuration;
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.PACKAGE, ElementType.TYPE})
+@Requires(property = Neo4jBoltSettings.PREFIX)
+@Requires(classes= Config.class)
+public @interface RequiresNeo4j {
+}

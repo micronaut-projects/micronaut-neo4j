@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.particleframework.configuration.neo4j.bolt
+package io.micronaut.configuration.neo4j.bolt
 
+import io.micronaut.context.ApplicationContext
+import io.micronaut.core.io.socket.SocketUtils
 import org.neo4j.driver.v1.Driver
-import org.particleframework.context.ApplicationContext
-import org.particleframework.core.io.socket.SocketUtils
+import io.micronaut.context.ApplicationContext
+import io.micronaut.core.io.socket.SocketUtils
 import spock.lang.Specification
 
 /**

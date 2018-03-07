@@ -13,21 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.particleframework.configuration.neo4j.bolt.embedded;
+package io.micronaut.configuration.neo4j.bolt.embedded;
 
+import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.event.BeanCreatedEvent;
+import io.micronaut.context.event.BeanCreatedEventListener;
+import io.micronaut.context.exceptions.ConfigurationException;
+import io.micronaut.core.io.socket.SocketUtils;
 import org.neo4j.graphdb.factory.GraphDatabaseSettings;
 import org.neo4j.harness.ServerControls;
 import org.neo4j.harness.TestServerBuilder;
 import org.neo4j.harness.TestServerBuilders;
 import org.neo4j.kernel.configuration.BoltConnector;
 import org.neo4j.server.ServerStartupException;
-import org.particleframework.configuration.neo4j.bolt.Neo4jBoltConfiguration;
-import org.particleframework.configuration.neo4j.bolt.Neo4jBoltSettings;
-import org.particleframework.context.annotation.Requires;
-import org.particleframework.context.event.BeanCreatedEvent;
-import org.particleframework.context.event.BeanCreatedEventListener;
-import org.particleframework.context.exceptions.ConfigurationException;
-import org.particleframework.core.io.socket.SocketUtils;
+import io.micronaut.configuration.neo4j.bolt.Neo4jBoltConfiguration;
+import io.micronaut.configuration.neo4j.bolt.Neo4jBoltSettings;
+import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.event.BeanCreatedEvent;
+import io.micronaut.context.event.BeanCreatedEventListener;
+import io.micronaut.context.exceptions.ConfigurationException;
+import io.micronaut.core.io.socket.SocketUtils;
 
 import javax.inject.Singleton;
 import java.io.Closeable;

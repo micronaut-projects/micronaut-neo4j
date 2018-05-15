@@ -15,14 +15,10 @@
  */
 
 /**
- * Neo4j Configuration classes.
+ * Neo4j heath indicator.
  *
  * @author graemerocher
  * @since 1.0
  */
-@Configuration
-@RequiresNeo4j
-package io.micronaut.configuration.neo4j.bolt;
+package io.micronaut.configuration.neo4j.bolt.health;
 
-import io.micronaut.context.annotation.Configuration;
-import io.micronaut.configuration.neo4j.bolt.condition.RequiresNeo4j;

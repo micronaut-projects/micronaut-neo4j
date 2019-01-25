@@ -1,0 +1,16 @@
+The configuration can be further customized with all the options available using the api:configuration.neo4j.bolt.Neo4jBoltConfiguration[] class.
+
+The `Neo4jBoltConfiguration` also exposes all the options for the `org.neo4j.driver.v1.Config.ConfigBuilder` class.
+
+Below represents an example configuration:
+
+.Customizing the Bolt Configuration
+[source,yaml]
+----
+neo4j:
+    uri: bolt://localhost
+    maxConnectionPoolSize: 50
+    connectionAcquisitionTimeout: 30s
+----
+
+TIP: You can also create a https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html[BeanCreatedEventListener] bean and listen for the creation of the api:configuration.neo4j.bolt.Neo4jBoltConfiguration[] to further programmatically customize configuration

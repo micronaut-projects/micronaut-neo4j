@@ -1,0 +1,17 @@
+dependencies {
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    // needed because otherwise IntelliJ integration broken
+    compileOnly "io.micronaut:micronaut-inject-java"
+    annotationProcessor "io.micronaut.docs:micronaut-docs-asciidoc-config-props:$micronautDocsVersion"    
+
+    compile "io.micronaut:micronaut-runtime:$micronautVersion"
+    compile "io.micronaut:micronaut-validation:$micronautVersion"
+ 
+    compile "org.neo4j.driver:neo4j-java-driver:$neo4jBoltVersion"
+    compileOnly "io.micronaut:micronaut-management"
+    compileOnly "org.neo4j.test:neo4j-harness"
+
+	testCompile "org.neo4j.test:neo4j-harness:$neo4jVersion"
+    testCompile "org.neo4j.test:neo4j-harness"
+    testCompile "io.micronaut:micronaut-management"
+}

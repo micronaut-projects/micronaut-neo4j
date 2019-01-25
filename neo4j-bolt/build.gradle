@@ -9,9 +9,8 @@ dependencies {
  
     compile "org.neo4j.driver:neo4j-java-driver:$neo4jBoltVersion"
     compileOnly "io.micronaut:micronaut-management"
-    compileOnly "org.neo4j.test:neo4j-harness"
+    compileOnly "org.neo4j.test:neo4j-harness:$neo4jVersion"
 
 	testCompile "org.neo4j.test:neo4j-harness:$neo4jVersion"
-    testCompile "org.neo4j.test:neo4j-harness"
     testCompile "io.micronaut:micronaut-management"
 }

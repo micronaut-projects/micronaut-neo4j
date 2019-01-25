@@ -16,8 +16,6 @@
 
 package io.micronaut.configuration.neo4j.bolt.embedded;
 
-import static org.neo4j.dbms.DatabaseManagementSystemSettings.data_directory;
-
 import io.micronaut.configuration.neo4j.bolt.Neo4jBoltConfiguration;
 import io.micronaut.configuration.neo4j.bolt.Neo4jBoltSettings;
 import io.micronaut.context.annotation.Requires;
@@ -41,6 +39,8 @@ import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import static org.neo4j.graphdb.factory.GraphDatabaseSettings.data_directory;
 
 /**
  * Starts an embedded Neo4j server if no server is running for the configured settings.

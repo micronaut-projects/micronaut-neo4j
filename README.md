@@ -1,11 +1,11 @@
-# Micronaut MongoDB
+# Micronaut Neo4j
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.micronaut.configuration/micronaut-mongo-reactive.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.micronaut.configuration%22%20AND%20a:%22micronaut-mongo-reactive%22)
-[![Build Status](https://travis-ci.org/micronaut-projects/micronaut-mongodb.svg?branch=master)](https://travis-ci.org/micronaut-projects/micronaut-mongodb)
+[![Maven Central](https://img.shields.io/maven-central/v/io.micronaut.configuration/micronaut-neo4j-bolt.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.micronaut.configuration%22%20AND%20a:%22micronaut-neo4j-bolt%22)
+[![Build Status](https://travis-ci.org/micronaut-projects/neo4j-bolt.svg?branch=master)](https://travis-ci.org/micronaut-projects/neo4j-bolt)
 
-Integrates Micronaut and MongoDB.
+Integrates Micronaut and Neo4j.
 
 ## Documentation
 
-See the [Documentation](https://micronaut-projects.github.io/micronaut-mongodb/latest/guide) for more information.
+See the [Documentation](https://micronaut-projects.github.io/micronaut-neo4j/latest/guide) for more information.
 

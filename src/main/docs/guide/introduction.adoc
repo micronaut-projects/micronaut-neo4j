@@ -1,1 +1,7 @@
 This project includes integration between Micronaut and Neo4j.
+
+=== Release History
+
+==== 1.1.0
+
+* Upgrade to Neo4j Java Driver `1.7.2`

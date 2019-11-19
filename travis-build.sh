@@ -63,7 +63,7 @@ if [[ $EXIT_STATUS -eq 0 ]]; then
 
         cd gh-pages
         
-        if [[ $TRAVIS_BRANCH =~ ^master|[12]\..\.x$ ]]; then
+        if [[ $TRAVIS_BRANCH =~ ^master$ ]]; then
            mkdir -p snapshot
            cp -r ../build/docs/. ./snapshot/
 

@@ -23,16 +23,19 @@ import io.micronaut.management.health.indicator.HealthResult;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
-import org.neo4j.driver.v1.AccessMode;
-import org.neo4j.driver.v1.Driver;
-import org.neo4j.driver.v1.Record;
-import org.neo4j.driver.v1.Session;
-import org.neo4j.driver.v1.StatementResultCursor;
-import org.reactivestreams.Publisher;
 
-import javax.inject.Singleton;
 import java.util.Collections;
 import java.util.concurrent.CompletionStage;
+
+import javax.inject.Singleton;
+
+import org.neo4j.driver.AccessMode;
+import org.neo4j.driver.Driver;
+import org.neo4j.driver.SessionConfig;
+import org.neo4j.driver.async.AsyncSession;
+import org.neo4j.driver.async.ResultCursor;
+import org.neo4j.driver.summary.ServerInfo;
+import org.reactivestreams.Publisher;
 
 /**
  * A Health Indicator for Neo4j.
@@ -47,6 +50,10 @@ public class Neo4jHealthIndicator implements HealthIndicator {
     public static final String NAME = "neo4j";
     private final Driver boltDriver;
 
+    private static final SessionConfig DEFAULT_SESSION_CONFIG = SessionConfig.builder()
+        .withDefaultAccessMode(AccessMode.WRITE)
+        .build();
+
     /**
      * Constructor.
      * @param boltDriver driver
@@ -58,36 +65,27 @@ public class Neo4jHealthIndicator implements HealthIndicator {
     @Override
     public Publisher<HealthResult> getResult() {
         try {
-            Session session = boltDriver.session(AccessMode.READ);
+            AsyncSession session = boltDriver.asyncSession(DEFAULT_SESSION_CONFIG);
 
             Single<HealthResult> healthResultSingle = Single.create(emitter -> {
-                CompletionStage<StatementResultCursor> query =
-                    session.runAsync("MATCH (n) RETURN COUNT(n) AS total");
+                CompletionStage<ResultCursor> query =
+                    session.runAsync("RETURN 1 AS result");
 
-                query.whenComplete((cursor, throwable) -> {
-                    if (throwable != null) {
-                        emitter.onSuccess(buildErrorResult(throwable));
-                    } else {
-                        CompletionStage<Record> record = cursor.nextAsync();
-                        record.whenComplete((record1, throwable1) -> {
-                            try {
-                                if (throwable1 != null) {
-                                    emitter.onSuccess(buildErrorResult(throwable1));
-                                } else {
-                                    HealthResult.Builder status = HealthResult.builder(NAME, HealthStatus.UP);
-                                    status.details(Collections.singletonMap(
-                                        "nodes", record1.get("total").asInt()
-                                    ));
-                                    emitter.onSuccess(status.build());
-                                }
-                            } catch (Throwable e) {
-                                emitter.onSuccess(buildErrorResult(e));
-                            } finally {
-                                session.closeAsync();
-                            }
-                        });
-                    }
-                });
+                query
+                    .thenComposeAsync(ResultCursor::consumeAsync)
+                    .handleAsync((resultSummaryStage, throwable) -> {
+                        if (throwable != null) {
+                            return buildErrorResult(throwable);
+                        } else {
+                            HealthResult.Builder status = HealthResult.builder(NAME, HealthStatus.UP);
+                            ServerInfo serverInfo = resultSummaryStage.server();
+                            status.details(Collections.singletonMap(
+                                "server", serverInfo.version() + "@" + serverInfo.address()));
+                            return status.build();
+                        }
+                    })
+                    .thenComposeAsync(status -> session.closeAsync().thenApply(signal -> status))
+                    .thenAccept(emitter::onSuccess);
             });
 
             return healthResultSingle.toFlowable().subscribeOn(Schedulers.io());

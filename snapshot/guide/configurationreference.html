@@ -69,12 +69,7 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo4j.logging</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.neo4j.driver.v1.Logging</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo4j.load-balancing-strategy</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.neo4j.driver.v1.Config$LoadBalancingStrategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.neo4j.driver.Logging</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -99,7 +94,17 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo4j.trust-strategy</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.neo4j.driver.v1.Config$TrustStrategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.neo4j.driver.Config$TrustStrategy</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo4j.routing-table-purge-delay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.Duration</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo4j.fetch-size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">long</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -114,7 +119,12 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo4j.resolver</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.neo4j.driver.v1.net.ServerAddressResolver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.neo4j.driver.net.ServerAddressResolver</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>neo4j.event-loop-threads</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>

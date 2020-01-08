@@ -18,7 +18,7 @@ package io.micronaut.configuration.neo4j.bolt.condition;
 
 import io.micronaut.configuration.neo4j.bolt.Neo4jBoltSettings;
 import io.micronaut.context.annotation.Requires;
-import org.neo4j.driver.v1.Config;
+import org.neo4j.driver.Config;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

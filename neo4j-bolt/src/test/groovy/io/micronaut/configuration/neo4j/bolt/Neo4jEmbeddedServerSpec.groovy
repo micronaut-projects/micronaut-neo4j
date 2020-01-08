@@ -16,7 +16,7 @@
 
 package io.micronaut.configuration.neo4j.bolt
 
-import org.neo4j.driver.v1.Driver
+import org.neo4j.driver.Driver
 import io.micronaut.context.ApplicationContext
 import io.micronaut.core.io.socket.SocketUtils
 import spock.lang.Specification

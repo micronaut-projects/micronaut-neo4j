@@ -19,7 +19,7 @@ package io.micronaut.configuration.neo4j.bolt;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.runtime.context.scope.Refreshable;
-import org.neo4j.driver.v1.Driver;
+import org.neo4j.driver.Driver;
 
 /**
  * Default factory for creating the Neo4j {@link Driver}.

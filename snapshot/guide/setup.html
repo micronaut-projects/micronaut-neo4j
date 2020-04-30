@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>2 Setting up the Neo4j Bolt Driver 1.3.0</title>
+    <title>2 Setting up the Neo4j Bolt Driver 2.0.1.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -84,7 +84,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>2 Setting up the Neo4j Bolt Driver</h1>
 
-                    <p><strong>Version:</strong> 1.3.0</p>
+                    <p><strong>Version:</strong> 2.0.1.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -124,13 +124,9 @@ function addJsClass() {
 </div>
 <div class="paragraph">
 <p>        <div class="listingblock multi-language-sample">
+<div class="title"></div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="gradle-groovy">compile <span class="hljs-string">'io.micronaut:micronaut-neo4j-bolt'</span></code></pre>
-</div>
-</div>
-        <div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle-kotlin">compile(<span class="hljs-string">"io.micronaut:micronaut-neo4j-bolt")</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut:micronaut-neo4j-bolt:2.0.1.BUILD-SNAPSHOT")</span></code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -138,10 +134,23 @@ function addJsClass() {
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
     &lt;groupId&gt;io.micronaut&lt;/groupId&gt;
     &lt;artifactId&gt;micronaut-neo4j-bolt&lt;/artifactId&gt;
+    &lt;version&gt;2.0.1.BUILD-SNAPSHOT&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
 </p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The 1.x line of <code>micronaut-neo4j-bolt</code> supports Neo4j Java Driver 1.x. The latest version of the Neo4j Java Driver is the 4.x line which changes the package name (amongst other breaking API changes) therefore in order to follow semantic versiooning the 2.x line of <code>micronaut-neo4j-bolt</code> is dedicated to this version.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>You should then configure the URI of the Neo4j server you wish to communicate with in <code>application.yml</code>:</p>

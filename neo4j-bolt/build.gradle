@@ -11,4 +11,4 @@ dependencies {
     testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
     testImplementation "io.micronaut:micronaut-management"
 }
-spotlessJavaMisc.enabled = false
+spotlessJavaMiscCheck.enabled = false

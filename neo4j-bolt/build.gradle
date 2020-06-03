@@ -4,10 +4,11 @@ dependencies {
 
     api "io.micronaut:micronaut-runtime:$micronautVersion"
     api "io.micronaut:micronaut-validation:$micronautVersion"
-    api "org.neo4j.driver:neo4j-java-driver:4.0.1"
+    api "org.neo4j.driver:neo4j-java-driver:$neo4jDriverVersion"
 
     compileOnly "io.micronaut:micronaut-management"
-    compileOnly "org.neo4j.test:neo4j-harness:3.5.16"
-    testImplementation "org.neo4j.test:neo4j-harness:3.5.16"
+    compileOnly "org.neo4j.test:neo4j-harness:$neo4jVersion"
+    testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
     testImplementation "io.micronaut:micronaut-management"
 }
+spotlessJavaMiscCheck.enabled = false

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package io.micronaut.configuration.neo4j.bolt.health
+package io.micronaut.neo4j.bolt.health
 
-import io.micronaut.configuration.neo4j.bolt.embedded.EmbeddedNeo4jServer
+import io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer
 import io.micronaut.context.ApplicationContext
 import io.micronaut.core.io.socket.SocketUtils
 import io.micronaut.health.HealthStatus

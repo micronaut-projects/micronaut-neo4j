@@ -11,7 +11,6 @@ dependencies {
     testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
     testImplementation "io.micronaut:micronaut-management"
 }
-spotlessJavaMiscCheck.enabled = false
 
 micronautBuild {
 	resolutionStrategy {

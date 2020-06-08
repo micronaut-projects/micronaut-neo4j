@@ -4,11 +4,16 @@ dependencies {
 
     api "io.micronaut:micronaut-runtime:$micronautVersion"
     api "io.micronaut:micronaut-validation:$micronautVersion"
-    api "org.neo4j.driver:neo4j-java-driver:$neo4jBoltVersion"
+    api "org.neo4j.driver:neo4j-java-driver:$neo4jDriverVersion"
 
     compileOnly "io.micronaut:micronaut-management"
     compileOnly "org.neo4j.test:neo4j-harness:$neo4jVersion"
-
-	testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
+    testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
     testImplementation "io.micronaut:micronaut-management"
+}
+
+micronautBuild {
+	resolutionStrategy {
+		force "org.neo4j.test:neo4j-harness:$neo4jVersion"
+	}
 }

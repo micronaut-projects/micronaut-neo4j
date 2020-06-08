@@ -1,11 +1,11 @@
 /*
- * Copyright 2017-2018 original authors
+ * Copyright 2017-2020 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,18 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package io.micronaut.configuration.neo4j.bolt;
+package io.micronaut.neo4j.bolt;
 
 import io.micronaut.context.annotation.ConfigurationBuilder;
 import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.core.util.Toggleable;
-import org.neo4j.driver.v1.AuthToken;
-import org.neo4j.driver.v1.AuthTokens;
-import org.neo4j.driver.v1.Config;
-import org.neo4j.driver.v1.Logger;
-import org.slf4j.LoggerFactory;
+import org.neo4j.driver.AuthToken;
+import org.neo4j.driver.AuthTokens;
+import org.neo4j.driver.Config;
+import org.neo4j.driver.Logging;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -57,7 +55,7 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
     public static final int DEFAULT_RETRYDELAY_SECONDS = 1;
 
     @ConfigurationBuilder(prefixes = "with", allowZeroArgs = true)
-    protected Config.ConfigBuilder config = Config.build();
+    protected Config.ConfigBuilder config = Config.builder();
 
     private List<URI> uris = Collections.singletonList(URI.create(DEFAULT_URI));
     private AuthToken authToken;
@@ -71,49 +69,7 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
      * Constructor.
      */
     public Neo4jBoltConfiguration() {
-        config.withLogging(name -> new Logger() {
-            private org.slf4j.Logger logger = LoggerFactory.getLogger(name);
-
-            @Override
-            public void error(String message, Throwable cause) {
-                logger.error(message, cause);
-            }
-
-            @Override
-            public void info(String message, Object... params) {
-                logger.info(String.format(message, params));
-            }
-
-            @Override
-            public void warn(String message, Object... params) {
-                logger.warn(String.format(message, params));
-            }
-
-            @Override
-            public void warn(String message, Throwable cause) {
-                logger.warn(message, cause);
-            }
-
-            @Override
-            public void debug(String message, Object... params) {
-                logger.debug(String.format(message, params));
-            }
-
-            @Override
-            public void trace(String message, Object... params) {
-                logger.trace(String.format(message, params));
-            }
-
-            @Override
-            public boolean isTraceEnabled() {
-                return logger.isTraceEnabled();
-            }
-
-            @Override
-            public boolean isDebugEnabled() {
-                return logger.isDebugEnabled();
-            }
-        });
+        config.withLogging(Logging.slf4j());
     }
 
     /**
@@ -181,7 +137,7 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
      * @return The configuration
      */
     public Config getConfig() {
-        return config.toConfig();
+        return config.build();
     }
 
     /**
@@ -193,7 +149,7 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
 
     /**
      * @return The auth token to use
-     * @see org.neo4j.driver.v1.AuthTokens
+     * @see org.neo4j.driver.AuthTokens
      */
     public Optional<AuthToken> getAuthToken() {
         if (authToken != null) {
@@ -227,7 +183,7 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
     }
 
     /**
-     * @param trustStrategy The {@link org.neo4j.driver.v1.Config.TrustStrategy}
+     * @param trustStrategy The {@link org.neo4j.driver.Config.TrustStrategy}
      */
     @Inject
     public void setTrustStrategy(@Nullable Config.TrustStrategy trustStrategy) {

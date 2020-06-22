@@ -2,6 +2,16 @@ This project includes integration between Micronaut and Neo4j.
 
 === Release History
 
+==== 3.0.0
+
+* Micronaut 1.3 minimum version
+* New Maven group ID `io.micronaut.neo4j`
+
+==== 2.0.0
+
+* Neo4j Driver 4.0.0 Support
+* Micronaut 1.2 minimum version
+
 ==== 1.3.0
 
 * Micronaut 1.2 minimum version

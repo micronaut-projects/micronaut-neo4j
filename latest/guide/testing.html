@@ -11,7 +11,7 @@
 
         gtag('config', 'UA-82213539-2');
     </script>
-    <title>4 Neo4j and Testing 2.0.0</title>
+    <title>4 Neo4j and Testing 3.0.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -84,7 +84,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>4 Neo4j and Testing</h1>
 
-                    <p><strong>Version:</strong> 2.0.0</p>
+                    <p><strong>Version:</strong> 3.0.0</p>
                 </div>
 
                 
@@ -104,13 +104,9 @@ function addJsClass() {
 </div>
 <div class="paragraph">
 <p>        <div class="listingblock multi-language-sample">
+<div class="title"></div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="gradle-groovy">testCompile <span class="hljs-string">'org.neo4j.test:neo4j-harness'</span></code></pre>
-</div>
-</div>
-        <div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle-kotlin">test(<span class="hljs-string">"org.neo4j.test:neo4j-harness")</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">testImplementation(<span class="hljs-string">"org.neo4j.test:neo4j-harness")</span></code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -128,7 +124,7 @@ function addJsClass() {
 <p>If the Neo4j server is not already running on the configured port an embedded version will be started.</p>
 </div>
 <div class="paragraph">
-<p>You can configure the options for the embedded Neo4j server using the <code>neo4j.embedded</code> settings exposed by <a href="../api/io/micronaut/configuration/neo4j/bolt/Neo4jBoltConfiguration.html">Neo4jBoltConfiguration</a>.</p>
+<p>You can configure the options for the embedded Neo4j server using the <code>neo4j.embedded</code> settings exposed by <a href="../api/io/micronaut/neo4j/bolt/Neo4jBoltConfiguration.html">Neo4jBoltConfiguration</a>.</p>
 </div>
 <div class="paragraph">
 <p>One useful option is <code>ephemeral</code> which ensures the data is cleaned up between test runs. For example in <code>application-test.yml</code>:</p>

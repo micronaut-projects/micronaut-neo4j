@@ -29,6 +29,7 @@ import org.neo4j.kernel.configuration.BoltConnector;
 import org.neo4j.kernel.configuration.Connector;
 import org.neo4j.server.ServerStartupException;
 
+import javax.annotation.PreDestroy;
 import javax.inject.Singleton;
 import java.io.Closeable;
 import java.io.File;
@@ -254,6 +255,7 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
         }
     }
 
+    @PreDestroy
     @Override
     public void close() throws IOException {
         serverControls.close();

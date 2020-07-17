@@ -511,8 +511,9 @@ implements io.micronaut.context.event.BeanCreatedEventListener&lt;<a href="../..
 <ul class="blockListLast">
 <li class="blockList">
 <h4>close</h4>
-<pre>public&nbsp;void&nbsp;close()
-           throws java.io.IOException</pre>
+<pre>@PreDestroy
+public&nbsp;void&nbsp;close()
+                       throws java.io.IOException</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>close</code>&nbsp;in interface&nbsp;<code>java.io.Closeable</code></dd>

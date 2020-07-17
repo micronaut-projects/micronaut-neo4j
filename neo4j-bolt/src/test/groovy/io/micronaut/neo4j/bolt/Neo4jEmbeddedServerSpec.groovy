@@ -19,6 +19,7 @@ package io.micronaut.neo4j.bolt
 import org.neo4j.driver.Driver
 import io.micronaut.context.ApplicationContext
 import io.micronaut.core.io.socket.SocketUtils
+import spock.lang.Shared
 import spock.lang.Specification
 
 /**
@@ -27,11 +28,31 @@ import spock.lang.Specification
  */
 class Neo4jEmbeddedServerSpec extends Specification{
 
+    @Shared
+    int EMBEDDED_NEO4J_TCP_PORT = SocketUtils.findAvailableTcpPort()
+
     void "test neo4j embedded"() {
         given:
         ApplicationContext applicationContext = ApplicationContext.run(
-                'neo4j.uri':"bolt://localhost:${SocketUtils.findAvailableTcpPort()}",
+                'neo4j.uri':"bolt://localhost:${EMBEDDED_NEO4J_TCP_PORT}",
                 'neo4j.embedded.ephemeral':true
+        )
+
+        when:
+        Driver driver = applicationContext.getBean(Driver)
+
+        then:
+        driver.session().run('MATCH (n) RETURN n').size() == 0
+
+        cleanup:
+        applicationContext?.stop()
+    }
+
+    void "test neo4j embedded again on the same port"() {
+        given:
+        ApplicationContext applicationContext = ApplicationContext.run(
+            'neo4j.uri':"bolt://localhost:${EMBEDDED_NEO4J_TCP_PORT}",
+            'neo4j.embedded.ephemeral':true
         )
 
         when:

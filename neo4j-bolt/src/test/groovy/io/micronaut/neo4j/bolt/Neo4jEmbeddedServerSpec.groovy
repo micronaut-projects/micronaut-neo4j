@@ -14,43 +14,52 @@
  * limitations under the License.
  */
 
-package io.micronaut.configuration.neo4j.bolt.health
+package io.micronaut.neo4j.bolt
 
-import io.micronaut.configuration.neo4j.bolt.embedded.EmbeddedNeo4jServer
+import org.neo4j.driver.Driver
 import io.micronaut.context.ApplicationContext
 import io.micronaut.core.io.socket.SocketUtils
-import io.micronaut.health.HealthStatus
-import io.micronaut.management.health.indicator.HealthResult
-import io.reactivex.Flowable
+import spock.lang.Shared
 import spock.lang.Specification
 
 /**
  * @author graemerocher
  * @since 1.0
  */
-class Neo4jHealthIndicatorSpec extends Specification {
-    void "test neo4j health indicator"() {
+class Neo4jEmbeddedServerSpec extends Specification{
+
+    @Shared
+    int EMBEDDED_NEO4J_TCP_PORT = SocketUtils.findAvailableTcpPort()
+
+    void "test neo4j embedded"() {
         given:
         ApplicationContext applicationContext = ApplicationContext.run(
-                'neo4j.uri':"bolt://localhost:${SocketUtils.findAvailableTcpPort()}",
+                'neo4j.uri':"bolt://localhost:${EMBEDDED_NEO4J_TCP_PORT}",
                 'neo4j.embedded.ephemeral':true
         )
 
         when:
-        Neo4jHealthIndicator indicator = applicationContext.getBean(Neo4jHealthIndicator)
-        HealthResult result = Flowable.fromPublisher(indicator.getResult()).blockingFirst()
+        Driver driver = applicationContext.getBean(Driver)
 
         then:
-        result.status == HealthStatus.UP
-        result.details.server instanceof String
-        result.details.server.matches "Neo4j/\\d\\.\\d\\.\\d.*"
+        driver.session().run('MATCH (n) RETURN n').size() == 0
+
+        cleanup:
+        applicationContext?.stop()
+    }
+
+    void "test neo4j embedded again on the same port"() {
+        given:
+        ApplicationContext applicationContext = ApplicationContext.run(
+            'neo4j.uri':"bolt://localhost:${EMBEDDED_NEO4J_TCP_PORT}",
+            'neo4j.embedded.ephemeral':true
+        )
 
         when:
-        applicationContext.getBean(EmbeddedNeo4jServer).close()
-        result = Flowable.fromPublisher(indicator.getResult()).blockingFirst()
+        Driver driver = applicationContext.getBean(Driver)
 
         then:
-        result.status == HealthStatus.DOWN
+        driver.session().run('MATCH (n) RETURN n').size() == 0
 
         cleanup:
         applicationContext?.stop()

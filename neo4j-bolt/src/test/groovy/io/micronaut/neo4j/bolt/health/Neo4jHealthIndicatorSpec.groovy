@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
-package io.micronaut.configuration.neo4j.bolt
+package io.micronaut.neo4j.bolt.health
 
-import org.neo4j.driver.Driver
+import io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer
 import io.micronaut.context.ApplicationContext
 import io.micronaut.core.io.socket.SocketUtils
+import io.micronaut.health.HealthStatus
+import io.micronaut.management.health.indicator.HealthResult
+import io.reactivex.Flowable
 import spock.lang.Specification
 
 /**
  * @author graemerocher
  * @since 1.0
  */
-class Neo4jEmbeddedServerSpec extends Specification{
-
-    void "test neo4j embedded"() {
+class Neo4jHealthIndicatorSpec extends Specification {
+    void "test neo4j health indicator"() {
         given:
         ApplicationContext applicationContext = ApplicationContext.run(
                 'neo4j.uri':"bolt://localhost:${SocketUtils.findAvailableTcpPort()}",
@@ -35,10 +37,20 @@ class Neo4jEmbeddedServerSpec extends Specification{
         )
 
         when:
-        Driver driver = applicationContext.getBean(Driver)
+        Neo4jHealthIndicator indicator = applicationContext.getBean(Neo4jHealthIndicator)
+        HealthResult result = Flowable.fromPublisher(indicator.getResult()).blockingFirst()
 
         then:
-        driver.session().run('MATCH (n) RETURN n').size() == 0
+        result.status == HealthStatus.UP
+        result.details.server instanceof String
+        result.details.server.matches "Neo4j/\\d\\.\\d\\.\\d.*"
+
+        when:
+        applicationContext.getBean(EmbeddedNeo4jServer).close()
+        result = Flowable.fromPublisher(indicator.getResult()).blockingFirst()
+
+        then:
+        result.status == HealthStatus.DOWN
 
         cleanup:
         applicationContext?.stop()

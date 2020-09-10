@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.micronaut.configuration.neo4j.bolt
+package io.micronaut.neo4j.bolt
 
 import io.micronaut.context.ApplicationContext
 import spock.lang.Specification

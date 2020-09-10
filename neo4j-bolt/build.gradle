@@ -4,10 +4,21 @@ dependencies {
 
     api "io.micronaut:micronaut-runtime:$micronautVersion"
     api "io.micronaut:micronaut-validation:$micronautVersion"
-    api "org.neo4j.driver:neo4j-java-driver:4.0.0"
+    api "org.neo4j.driver:neo4j-java-driver:$neo4jDriverVersion"
 
     compileOnly "io.micronaut:micronaut-management"
-    compileOnly "org.neo4j.test:neo4j-harness:3.5.14"
-	testImplementation "org.neo4j.test:neo4j-harness:3.5.14"
+    compileOnly "org.neo4j.test:neo4j-harness:$neo4jVersion"
+    testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
     testImplementation "io.micronaut:micronaut-management"
+
+    testImplementation("org.spockframework:spock-core:${spockVersion}") {
+        exclude module:'groovy-all'
+    }
+    testImplementation "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
+}
+
+micronautBuild {
+	resolutionStrategy {
+		force "org.neo4j.test:neo4j-harness:$neo4jVersion"
+	}
 }

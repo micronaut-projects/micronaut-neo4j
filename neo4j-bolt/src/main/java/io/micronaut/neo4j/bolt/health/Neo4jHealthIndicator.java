@@ -47,12 +47,12 @@ import org.reactivestreams.Publisher;
 public class Neo4jHealthIndicator implements HealthIndicator {
 
     public static final String NAME = "neo4j";
-    private final Driver boltDriver;
-
     private static final SessionConfig DEFAULT_SESSION_CONFIG = SessionConfig.builder()
         .withDefaultAccessMode(AccessMode.WRITE)
         .build();
 
+    private final Driver boltDriver;
+    
     /**
      * Constructor.
      * @param boltDriver driver

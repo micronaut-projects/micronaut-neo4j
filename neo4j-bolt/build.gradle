@@ -10,6 +10,11 @@ dependencies {
     compileOnly "org.neo4j.test:neo4j-harness:$neo4jVersion"
     testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
     testImplementation "io.micronaut:micronaut-management"
+
+    testImplementation("org.spockframework:spock-core:${spockVersion}") {
+        exclude module:'groovy-all'
+    }
+    testImplementation "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
 }
 
 micronautBuild {

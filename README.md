@@ -1,6 +1,6 @@
 # Micronaut Neo4j
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.micronaut.configuration/micronaut-neo4j-bolt.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.micronaut.configuration%22%20AND%20a:%22micronaut-neo4j-bolt%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.micronaut.neo4j/micronaut-neo4j-bolt.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.micronaut.neo4j%22%20AND%20a:%22micronaut-neo4j-bolt%22)
 [![Build Status](https://github.com/micronaut-projects/micronaut-neo4j/workflows/Java%20CI/badge.svg)](https://github.com/micronaut-projects/micronaut-neo4j/actions)
 
 Integrates Micronaut and Neo4j.

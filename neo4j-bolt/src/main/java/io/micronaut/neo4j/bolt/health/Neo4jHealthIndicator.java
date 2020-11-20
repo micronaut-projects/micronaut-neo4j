@@ -28,11 +28,10 @@ import java.util.concurrent.CompletionStage;
 
 import javax.inject.Singleton;
 
-import org.neo4j.driver.AccessMode;
 import org.neo4j.driver.Driver;
-import org.neo4j.driver.SessionConfig;
 import org.neo4j.driver.async.AsyncSession;
 import org.neo4j.driver.async.ResultCursor;
+import org.neo4j.driver.summary.ResultSummary;
 import org.neo4j.driver.summary.ServerInfo;
 import org.reactivestreams.Publisher;
 
@@ -47,9 +46,6 @@ import org.reactivestreams.Publisher;
 public class Neo4jHealthIndicator implements HealthIndicator {
 
     public static final String NAME = "neo4j";
-    private static final SessionConfig DEFAULT_SESSION_CONFIG = SessionConfig.builder()
-        .withDefaultAccessMode(AccessMode.WRITE)
-        .build();
 
     private final Driver boltDriver;
     
@@ -64,14 +60,12 @@ public class Neo4jHealthIndicator implements HealthIndicator {
     @Override
     public Publisher<HealthResult> getResult() {
         try {
-            AsyncSession session = boltDriver.asyncSession(DEFAULT_SESSION_CONFIG);
 
             Single<HealthResult> healthResultSingle = Single.create(emitter -> {
-                CompletionStage<ResultCursor> query =
-                    session.runAsync("RETURN 1 AS result");
-
+                AsyncSession session = boltDriver.asyncSession();
+                CompletionStage<ResultSummary> query =
+                    session.writeTransactionAsync(tx -> tx.runAsync("RETURN 1 AS result").thenCompose(ResultCursor::consumeAsync));
                 query
-                    .thenComposeAsync(ResultCursor::consumeAsync)
                     .handleAsync((resultSummaryStage, throwable) -> {
                         if (throwable != null) {
                             return buildErrorResult(throwable);
@@ -83,7 +77,7 @@ public class Neo4jHealthIndicator implements HealthIndicator {
                             return status.build();
                         }
                     })
-                    .thenComposeAsync(status -> session.closeAsync().thenApply(signal -> status))
+                    .thenComposeAsync(status -> session.closeAsync().handle((signal, throwable) -> status))
                     .thenAccept(emitter::onSuccess);
             });
 

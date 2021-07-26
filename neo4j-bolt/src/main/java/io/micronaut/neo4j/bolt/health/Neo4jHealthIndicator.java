@@ -19,14 +19,14 @@ import io.micronaut.context.annotation.Requires;
 import io.micronaut.health.HealthStatus;
 import io.micronaut.management.health.indicator.HealthIndicator;
 import io.micronaut.management.health.indicator.HealthResult;
-import io.reactivex.Flowable;
-import io.reactivex.Single;
-import io.reactivex.schedulers.Schedulers;
 
 import java.util.Collections;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutorService;
 
-import javax.inject.Singleton;
+import io.micronaut.scheduling.TaskExecutors;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.async.AsyncSession;
@@ -34,6 +34,8 @@ import org.neo4j.driver.async.ResultCursor;
 import org.neo4j.driver.summary.ResultSummary;
 import org.neo4j.driver.summary.ServerInfo;
 import org.reactivestreams.Publisher;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 /**
  * A Health Indicator for Neo4j.
@@ -48,20 +50,23 @@ public class Neo4jHealthIndicator implements HealthIndicator {
     public static final String NAME = "neo4j";
 
     private final Driver boltDriver;
+    private final ExecutorService ioExecutor;
     
     /**
      * Constructor.
      * @param boltDriver driver
+     * @param ioExecutor The IO executor
      */
-    public Neo4jHealthIndicator(Driver boltDriver) {
+    public Neo4jHealthIndicator(Driver boltDriver, @Named(TaskExecutors.IO) ExecutorService ioExecutor) {
         this.boltDriver = boltDriver;
+        this.ioExecutor = ioExecutor;
     }
 
     @Override
     public Publisher<HealthResult> getResult() {
         try {
 
-            Single<HealthResult> healthResultSingle = Single.create(emitter -> {
+            Mono<HealthResult> healthResultSingle = Mono.create(emitter -> {
                 AsyncSession session = boltDriver.asyncSession();
                 CompletionStage<ResultSummary> query =
                     session.writeTransactionAsync(tx -> tx.runAsync("RETURN 1 AS result").thenCompose(ResultCursor::consumeAsync));
@@ -78,12 +83,12 @@ public class Neo4jHealthIndicator implements HealthIndicator {
                         }
                     })
                     .thenComposeAsync(status -> session.closeAsync().handle((signal, throwable) -> status))
-                    .thenAccept(emitter::onSuccess);
+                    .thenAccept(emitter::success);
             });
 
-            return healthResultSingle.toFlowable().subscribeOn(Schedulers.io());
+            return healthResultSingle.subscribeOn(Schedulers.fromExecutorService(ioExecutor));
         } catch (Throwable e) {
-            return Flowable.just(buildErrorResult(e));
+            return Mono.just(buildErrorResult(e));
         }
     }
 

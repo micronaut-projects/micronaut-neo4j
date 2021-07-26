@@ -17,6 +17,7 @@ package io.micronaut.neo4j.bolt;
 
 import io.micronaut.context.annotation.ConfigurationBuilder;
 import io.micronaut.context.annotation.ConfigurationProperties;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.core.util.Toggleable;
 import org.neo4j.driver.AuthToken;
@@ -24,8 +25,7 @@ import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Config;
 import org.neo4j.driver.Logging;
 
-import javax.annotation.Nullable;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.net.URI;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;

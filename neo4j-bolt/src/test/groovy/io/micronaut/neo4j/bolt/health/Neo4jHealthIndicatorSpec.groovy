@@ -21,7 +21,7 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.core.io.socket.SocketUtils
 import io.micronaut.health.HealthStatus
 import io.micronaut.management.health.indicator.HealthResult
-import io.reactivex.Flowable
+import reactor.core.publisher.Mono
 import spock.lang.Specification
 
 /**
@@ -38,7 +38,7 @@ class Neo4jHealthIndicatorSpec extends Specification {
 
         when:
         Neo4jHealthIndicator indicator = applicationContext.getBean(Neo4jHealthIndicator)
-        HealthResult result = Flowable.fromPublisher(indicator.getResult()).blockingFirst()
+        HealthResult result = Mono.from(indicator.getResult()).block()
 
         then:
         result.status == HealthStatus.UP
@@ -47,7 +47,7 @@ class Neo4jHealthIndicatorSpec extends Specification {
 
         when:
         applicationContext.getBean(EmbeddedNeo4jServer).close()
-        result = Flowable.fromPublisher(indicator.getResult()).blockingFirst()
+        result = Mono.from(indicator.getResult()).block()
 
         then:
         result.status == HealthStatus.DOWN

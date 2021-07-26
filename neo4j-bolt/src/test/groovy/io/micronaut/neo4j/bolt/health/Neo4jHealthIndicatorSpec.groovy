@@ -43,7 +43,7 @@ class Neo4jHealthIndicatorSpec extends Specification {
         then:
         result.status == HealthStatus.UP
         result.details.server instanceof String
-        result.details.server.matches "Neo4j/\\d\\.\\d\\.\\d.*"
+        result.details.server.matches "Neo4j.*@\\d+\\.\\d+\\.\\d+\\.\\d+.*"
 
         when:
         applicationContext.getBean(EmbeddedNeo4jServer).close()

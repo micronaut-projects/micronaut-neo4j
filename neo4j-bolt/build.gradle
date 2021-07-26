@@ -5,6 +5,7 @@ dependencies {
     api "io.micronaut:micronaut-runtime:$micronautVersion"
     api "io.micronaut:micronaut-validation:$micronautVersion"
     api "org.neo4j.driver:neo4j-java-driver:$neo4jDriverVersion"
+    api "io.projectreactor:reactor-core"
 
     compileOnly "io.micronaut:micronaut-management"
     compileOnly "org.neo4j.test:neo4j-harness:$neo4jVersion"

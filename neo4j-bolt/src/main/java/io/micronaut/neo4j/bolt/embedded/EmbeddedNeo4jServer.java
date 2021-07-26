@@ -30,7 +30,7 @@ import org.neo4j.kernel.configuration.Connector;
 import org.neo4j.server.ServerStartupException;
 
 import javax.annotation.PreDestroy;
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;

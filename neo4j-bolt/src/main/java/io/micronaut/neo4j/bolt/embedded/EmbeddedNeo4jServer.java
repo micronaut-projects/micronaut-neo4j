@@ -22,8 +22,8 @@ import io.micronaut.context.event.BeanCreatedEvent;
 import io.micronaut.context.event.BeanCreatedEventListener;
 import io.micronaut.context.exceptions.ConfigurationException;
 import io.micronaut.core.io.socket.SocketUtils;
-import org.neo4j.configuration.BootloaderSettings;
 import org.neo4j.configuration.Config;
+import org.neo4j.configuration.ExternalSettings;
 import org.neo4j.configuration.connectors.BoltConnector;
 import org.neo4j.configuration.helpers.SocketAddress;
 import org.neo4j.graphdb.config.Setting;
@@ -228,7 +228,7 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
     public static Neo4j start(String host, int port, File dataLocation, Map<String, Object> options) {
         Neo4jBuilder serverBuilder = Neo4jBuilders.newInProcessBuilder();
         if (dataLocation != null) {
-            serverBuilder = serverBuilder.withConfig(BootloaderSettings.run_directory, dataLocation.toPath());
+            serverBuilder = serverBuilder.withConfig(ExternalSettings.run_directory, dataLocation.toPath());
         }
         Config.Builder builder = Config.newBuilder();
         Map<String, String> settings = options.entrySet().stream()

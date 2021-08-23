@@ -258,6 +258,8 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
     @PreDestroy
     @Override
     public void close() throws IOException {
-        serverControls.close();
+        if (serverControls != null) {
+            serverControls.close();
+        }
     }
 }

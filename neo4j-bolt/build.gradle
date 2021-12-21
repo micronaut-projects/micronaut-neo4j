@@ -1,21 +1,20 @@
+plugins {
+    id 'io.micronaut.build.internal.module'
+}
+
 dependencies {
-    annotationProcessor "io.micronaut:micronaut-inject-java"
-    annotationProcessor "io.micronaut.docs:micronaut-docs-asciidoc-config-props:$micronautDocsVersion"    
-
-    api "io.micronaut:micronaut-runtime:$micronautVersion"
-    api "io.micronaut:micronaut-validation:$micronautVersion"
+    annotationProcessor "io.micronaut.docs:micronaut-docs-asciidoc-config-props:$micronautDocsVersion"
+    annotationProcessor mn.micronaut.inject.java
     api "org.neo4j.driver:neo4j-java-driver:$neo4jDriverVersion"
-    api "io.projectreactor:reactor-core"
-
-    compileOnly "io.micronaut:micronaut-management"
+    api mn.micronaut.runtime
+    api mn.micronaut.validation
+    api mn.reactor
     compileOnly "org.neo4j.test:neo4j-harness:$neo4jVersion"
+    compileOnly mn.micronaut.management
     testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
-    testImplementation "io.micronaut:micronaut-management"
-
-    testImplementation("org.spockframework:spock-core:${spockVersion}") {
-        exclude module:'groovy-all'
-    }
-    testImplementation "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
+    testImplementation mn.micronaut.management
+    testImplementation mn.micronaut.test.spock
+    testImplementation mn.spock
 }
 
 micronautBuild {

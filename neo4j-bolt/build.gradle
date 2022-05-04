@@ -3,15 +3,15 @@ plugins {
 }
 
 dependencies {
-    annotationProcessor "io.micronaut.docs:micronaut-docs-asciidoc-config-props:$micronautDocsVersion"
+    annotationProcessor(libs.micronaut.docs.asciidoc.config.props)
     annotationProcessor mn.micronaut.inject.java
-    api "org.neo4j.driver:neo4j-java-driver:$neo4jDriverVersion"
+    api(libs.neo4j.java.driver)
     api mn.micronaut.runtime
     api mn.micronaut.validation
     api mn.reactor
-    compileOnly "org.neo4j.test:neo4j-harness:$neo4jVersion"
+    compileOnly(libs.neo4j.harness)
     compileOnly mn.micronaut.management
-    testImplementation "org.neo4j.test:neo4j-harness:$neo4jVersion"
+    testImplementation(libs.neo4j.harness)
     testImplementation mn.micronaut.management
     testImplementation mn.micronaut.test.spock
     testImplementation mn.spock
@@ -19,7 +19,7 @@ dependencies {
 
 micronautBuild {
 	resolutionStrategy {
-		force "org.neo4j.test:neo4j-harness:$neo4jVersion"
+		force(libs.neo4j.harness)
 	}
 }
 

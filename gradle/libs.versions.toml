@@ -1,0 +1,14 @@
+[versions]
+neo4j = "3.5.29"
+neo4j-driver = "4.2.7"
+
+# Micronaut
+micronaut-docs = "2.0.0"
+
+
+[libraries]
+# Micronaut
+micronaut-docs-asciidoc-config-props = { module = "io.micronaut.docs:micronaut-docs-asciidoc-config-props", version.ref = "micronaut-docs" }
+
+neo4j-harness = { module = "org.neo4j.test:neo4j-harness", version.ref = "neo4j" }
+neo4j-java-driver = { module = "org.neo4j.driver:neo4j-java-driver", version.ref = "neo4j-driver" }

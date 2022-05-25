@@ -1,5 +1,5 @@
 [versions]
-neo4j = "3.5.29"
+neo4j = "3.5.33"
 neo4j-driver = "4.2.7"
 
 # Micronaut

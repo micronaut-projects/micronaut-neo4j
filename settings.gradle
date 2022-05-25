@@ -11,6 +11,7 @@ plugins {
 
 rootProject.name = 'neo4j-parent'
 
+include "neo4j-bom"
 include 'neo4j-bolt'
 
 enableFeaturePreview 'TYPESAFE_PROJECT_ACCESSORS'

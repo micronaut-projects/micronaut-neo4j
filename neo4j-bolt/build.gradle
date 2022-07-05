@@ -3,18 +3,13 @@ plugins {
 }
 
 dependencies {
-    annotationProcessor(libs.micronaut.docs.asciidoc.config.props)
-    annotationProcessor mn.micronaut.inject.java
     api(libs.managed.neo4j.java.driver)
-    api mn.micronaut.runtime
-    api mn.micronaut.validation
-    api mn.reactor
+    api(mn.micronaut.validation)
+    api(mn.reactor)
     compileOnly(libs.managed.neo4j.harness)
-    compileOnly mn.micronaut.management
+    compileOnly(mn.micronaut.management)
     testImplementation(libs.managed.neo4j.harness)
-    testImplementation mn.micronaut.management
-    testImplementation mn.micronaut.test.spock
-    testImplementation mn.spock
+    testImplementation(mn.micronaut.management)
 }
 
 micronautBuild {

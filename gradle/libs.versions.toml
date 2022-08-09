@@ -1,19 +1,12 @@
 [versions]
-# Required to keep catalog compatibility with 3.4.x.  Can be removed for 4.0.0
-managed-neo4j-compat = "3.5.34"
-managed-neo4j-driver-compat = "4.4.9"
 
-managed-neo4j = "3.5.34"
+managed-neo4j = "4.4.10"
 managed-neo4j-driver = "4.4.9"
 
 # Micronaut
 micronaut-docs = "2.0.0"
 
-
 [libraries]
-# Duplicated to keep catalog compatibility with 3.4.x.  Can be removed for 4.0.0
-managed-neo4j = { module = "org.neo4j.test:neo4j-harness", version.ref = "managed-neo4j-compat" }
-managed-neo4j-bolt = { module = "org.neo4j.driver:neo4j-java-driver", version.ref = "managed-neo4j-driver-compat" }
 
 managed-neo4j-harness = { module = "org.neo4j.test:neo4j-harness", version.ref = "managed-neo4j" }
 managed-neo4j-java-driver = { module = "org.neo4j.driver:neo4j-java-driver", version.ref = "managed-neo4j-driver" }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2020 original authors
+ * Copyright 2017-2022 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,15 @@ import io.micronaut.context.event.BeanCreatedEvent;
 import io.micronaut.context.event.BeanCreatedEventListener;
 import io.micronaut.context.exceptions.ConfigurationException;
 import io.micronaut.core.io.socket.SocketUtils;
-import org.neo4j.harness.ServerControls;
-import org.neo4j.harness.TestServerBuilder;
-import org.neo4j.harness.TestServerBuilders;
-import org.neo4j.kernel.configuration.BoltConnector;
-import org.neo4j.kernel.configuration.Connector;
+import org.neo4j.configuration.GraphDatabaseSettings;
+import org.neo4j.configuration.SettingImpl;
+import org.neo4j.configuration.SettingValueParsers;
+import org.neo4j.configuration.connectors.BoltConnector;
+import org.neo4j.configuration.helpers.SocketAddress;
+import org.neo4j.graphdb.config.Setting;
+import org.neo4j.harness.Neo4j;
+import org.neo4j.harness.Neo4jBuilder;
+import org.neo4j.harness.Neo4jBuilders;
 import org.neo4j.server.ServerStartupException;
 
 import javax.annotation.PreDestroy;
@@ -40,7 +44,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static org.neo4j.graphdb.factory.GraphDatabaseSettings.data_directory;
 
 /**
  * Starts an embedded Neo4j server if no server is running for the configured settings.
@@ -49,10 +52,10 @@ import static org.neo4j.graphdb.factory.GraphDatabaseSettings.data_directory;
  * @since 1.0
  */
 @Singleton
-@Requires(classes = ServerControls.class)
+@Requires(classes = Neo4j.class)
 public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltConfiguration>, Closeable {
     private static final int RETRY_COUNT_MAX = 4;
-    private ServerControls serverControls;
+    private Neo4j serverControls;
 
     @Override
     public Neo4jBoltConfiguration onCreated(BeanCreatedEvent<Neo4jBoltConfiguration> event) {
@@ -105,7 +108,7 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      * @return The server controls
      * @throws IOException i/o exception
      */
-    public static ServerControls start(File dataLocation) throws IOException {
+    public static Neo4j start(File dataLocation) throws IOException {
         return attemptStartServer(0, dataLocation, Collections.<String, Object>emptyMap());
     }
 
@@ -117,7 +120,7 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      * @return The server controls
      * @throws IOException i/o exception
      */
-    public static ServerControls start(File dataLocation, Map<String, Object> options) throws IOException {
+    public static Neo4j start(File dataLocation, Map<String, Object> options) throws IOException {
         return attemptStartServer(0, dataLocation, options);
     }
 
@@ -125,9 +128,9 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      * Start a server on the given address.
      *
      * @param inetAddr The inet address
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(InetSocketAddress inetAddr) {
+    public static Neo4j start(InetSocketAddress inetAddr) {
         return start(inetAddr.getHostName(), inetAddr.getPort(), null);
     }
 
@@ -136,9 +139,9 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      *
      * @param inetAddr The inet address
      * @param dataLocation dataLocation file
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(InetSocketAddress inetAddr, File dataLocation) {
+    public static Neo4j start(InetSocketAddress inetAddr, File dataLocation) {
         return start(inetAddr.getHostName(), inetAddr.getPort(), dataLocation);
     }
 
@@ -148,9 +151,9 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      * @param inetAddr The inet address
      * @param dataLocation dataLocation file
      * @param options options for neo4j
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(InetSocketAddress inetAddr, File dataLocation, Map<String, Object> options) {
+    public static Neo4j start(InetSocketAddress inetAddr, File dataLocation, Map<String, Object> options) {
         return start(inetAddr.getHostName(), inetAddr.getPort(), dataLocation, options);
     }
 
@@ -158,9 +161,9 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      * Start a server on the given address.
      *
      * @param address The address
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(String address) {
+    public static Neo4j start(String address) {
         URI uri = URI.create(address);
         return start(new InetSocketAddress(uri.getHost(), uri.getPort()));
     }
@@ -170,9 +173,9 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      *
      * @param address The address
      * @param dataLocation dataLocation file
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(String address, File dataLocation) {
+    public static Neo4j start(String address, File dataLocation) {
         URI uri = URI.create(address);
         return start(uri.getHost(), uri.getPort(), dataLocation);
     }
@@ -183,9 +186,9 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      * @param address The address
      * @param options options for neo4j
      * @param dataLocation dataLocation file
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(String address, File dataLocation, Map<String, Object> options) {
+    public static Neo4j start(String address, File dataLocation, Map<String, Object> options) {
         URI uri = URI.create(address);
         return start(uri.getHost(), uri.getPort(), dataLocation, options);
     }
@@ -195,9 +198,9 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      *
      * @param host The host
      * @param port The port
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(String host, int port) {
+    public static Neo4j start(String host, int port) {
         return start(host, port, null);
     }
 
@@ -207,9 +210,9 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      * @param host The host
      * @param port The port
      * @param dataLocation dataLocation file
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(String host, int port, File dataLocation) {
+    public static Neo4j start(String host, int port, File dataLocation) {
         return start(host, port, dataLocation, Collections.<String, Object>emptyMap());
     }
 
@@ -220,29 +223,29 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
      * @param port The port
      * @param dataLocation dataLocation file
      * @param options options for neo4j
-     * @return The {@link ServerControls}
+     * @return The {@link Neo4j}
      */
-    public static ServerControls start(String host, int port, File dataLocation, Map<String, Object> options) {
-        String myBoltAddress = String.format("%s:%d", host, port);
+    public static Neo4j start(String host, int port, File dataLocation, Map<String, Object> options) {
 
-        TestServerBuilder serverBuilder = TestServerBuilders.newInProcessBuilder()
-            .withConfig(new BoltConnector("0").enabled, "true")
-            .withConfig(new BoltConnector("0").type, Connector.ConnectorType.BOLT.name())
-            .withConfig(new BoltConnector("0").encryption_level, BoltConnector.EncryptionLevel.DISABLED.name())
-            .withConfig(new BoltConnector("0").listen_address, myBoltAddress);
+        Neo4jBuilder neo4jBuilder = Neo4jBuilders.newInProcessBuilder()
+            .withConfig(BoltConnector.enabled, true)
+            // there doesn't appear to be a 4.x equivalent, and can probably be removed
+//            .withConfig(BoltConnector.type, Connector.ConnectorType.BOLT.name())
+            .withConfig(BoltConnector.encryption_level, BoltConnector.EncryptionLevel.DISABLED)
+            .withConfig(BoltConnector.listen_address, new SocketAddress(host, port));
         if (dataLocation != null) {
-            serverBuilder = serverBuilder.withConfig(data_directory, dataLocation.getPath());
+            neo4jBuilder = neo4jBuilder.withConfig(GraphDatabaseSettings.data_directory, dataLocation.toPath());
         }
 
         for (String name : options.keySet()) {
-            serverBuilder.withConfig(name, options.get(name).toString());
+            Setting<String> setting = SettingImpl.newBuilder(name, SettingValueParsers.STRING, options.get(name).toString()).build();
+            neo4jBuilder.withConfig(setting, options.get(name).toString());
         }
 
-        return serverBuilder
-            .newServer();
+        return neo4jBuilder.build();
     }
 
-    private static ServerControls attemptStartServer(int retryCount, File dataLocation, Map<String, Object> options) throws IOException {
+    private static Neo4j attemptStartServer(int retryCount, File dataLocation, Map<String, Object> options) throws IOException {
         try {
             //In the new driver 0 implicitly means a random port
             return start("localhost", 0, dataLocation, options);

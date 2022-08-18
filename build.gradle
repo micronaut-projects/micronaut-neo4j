@@ -4,21 +4,7 @@ plugins {
     id 'io.micronaut.build.internal.quality-reporting'
 }
 
-repositories {
-    mavenCentral()
-    maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+micronautBuild {
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
 }
-
-// This should be removed when the build plugins change to use java 11/17
-// Neo4j 4.x requires Java 11, and javadoc fails when it uses Java 8
-// with error: cannot access GraphDatabaseSettings...class file has wrong version 55.0, should be 52.0
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
-    }
-}
-
-tasks.withType(Javadoc) {
-    javadocTool.set(javaToolchains.javadocToolFor(java.toolchain))
-}
-

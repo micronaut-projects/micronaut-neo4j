@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"io.micronaut.neo4j.bolt"},{"l":"io.micronaut.neo4j.bolt.condition"},{"l":"io.micronaut.neo4j.bolt.embedded"},{"l":"io.micronaut.neo4j.bolt.health"}]

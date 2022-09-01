@@ -1,3 +1,13 @@
 plugins {
     id("io.micronaut.build.internal.bom")
 }
+
+// disabled until catalog is updated for 4.0.x, to avoid these build errors
+//> Version catalogs are not compatible:
+//The following versions were present in the baseline version but missing from this catalog:
+//        - neo4j-compat
+//        - neo4j-driver-compat
+//The following libraries were present in the baseline version but missing from this catalog:
+//        - neo4j
+//        - neo4j-bolt
+tasks.checkVersionCatalogCompatibility { enabled = false }

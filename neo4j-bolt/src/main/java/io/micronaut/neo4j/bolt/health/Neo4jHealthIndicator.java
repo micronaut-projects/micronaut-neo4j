@@ -51,7 +51,7 @@ public class Neo4jHealthIndicator implements HealthIndicator {
 
     private final Driver boltDriver;
     private final ExecutorService ioExecutor;
-    
+
     /**
      * Constructor.
      * @param boltDriver driver
@@ -78,7 +78,7 @@ public class Neo4jHealthIndicator implements HealthIndicator {
                             HealthResult.Builder status = HealthResult.builder(NAME, HealthStatus.UP);
                             ServerInfo serverInfo = resultSummaryStage.server();
                             status.details(Collections.singletonMap(
-                                "server", serverInfo.version() + "@" + serverInfo.address()));
+                                "server", serverInfo.agent() + "@" + serverInfo.address()));
                             return status.build();
                         }
                     })

@@ -11,8 +11,6 @@ To configure the Neo4j Bolt driver you should first add the `neo4j-bolt` module 
 
 dependency::micronaut-neo4j-bolt[groupId="io.micronaut.neo4j", version="{version}"]
 
-NOTE: The 1.x line of `micronaut-neo4j-bolt` supports Neo4j Java Driver 1.x. The latest version of the Neo4j Java Driver is the 4.x line which changes the package name (amongst other breaking API changes) therefore in order to follow semantic versiooning the 2.x line of `micronaut-neo4j-bolt` is dedicated to this version.
-
 You should then configure the URI of the Neo4j server you wish to communicate with in `application.yml`:
 
 .Configuring `neo4j.uri`

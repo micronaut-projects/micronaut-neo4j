@@ -4,7 +4,7 @@ managed-neo4j-compat = "3.5.35"
 managed-neo4j-driver-compat = "4.4.9"
 
 managed-neo4j = "3.5.35"
-managed-neo4j-driver = "4.4.9"
+managed-neo4j-driver = "5.1.0"
 
 # Micronaut
 micronaut-docs = "2.0.0"

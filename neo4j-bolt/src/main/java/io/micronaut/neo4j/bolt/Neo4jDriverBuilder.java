@@ -15,18 +15,16 @@
  */
 package io.micronaut.neo4j.bolt;
 
-import io.micronaut.context.exceptions.ConfigurationException;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.retry.annotation.Retryable;
+import jakarta.inject.Singleton;
 import org.neo4j.driver.AuthToken;
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
 import org.neo4j.driver.exceptions.ServiceUnavailableException;
 
-import jakarta.inject.Singleton;
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -58,31 +56,20 @@ public class Neo4jDriverBuilder {
     @Retryable(ServiceUnavailableException.class)
     public Driver buildDriver() {
         Neo4jBoltConfiguration configuration = this.boltConfiguration;
-        List<URI> uris = configuration.getUris();
         Optional<AuthToken> configuredAuthToken = configuration.getAuthToken();
         AuthToken authToken = configuredAuthToken.orElse(null);
-        if (uris.size() == 1) {
-            URI uri = uris.get(0);
-            String userInfo = uri.getUserInfo();
-            if (authToken == null && StringUtils.hasText(userInfo)) {
-                String[] info = userInfo.split(":");
-                if (info.length == 2) {
-                    authToken = AuthTokens.basic(info[0], info[1]);
-                }
+        URI uri = configuration.getUri();
+        String userInfo = uri.getUserInfo();
+        if (authToken == null && StringUtils.hasText(userInfo)) {
+            String[] info = userInfo.split(":");
+            if (info.length == 2) {
+                authToken = AuthTokens.basic(info[0], info[1]);
             }
-            return GraphDatabase.driver(
-                uri,
-                authToken,
-                configuration.getConfig()
-            );
-        } else if (!uris.isEmpty()) {
-            return GraphDatabase.routingDriver(
-                uris,
-                authToken,
-                configuration.getConfig()
-            );
-        } else {
-            throw new ConfigurationException("At least one Neo4j URI should be specified eg. neo4j.uri=" + Neo4jBoltConfiguration.DEFAULT_URI);
         }
+        return GraphDatabase.driver(
+            uri,
+            authToken,
+            configuration.getConfig()
+        );
     }
 }

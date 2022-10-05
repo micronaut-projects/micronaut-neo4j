@@ -2,6 +2,10 @@ You can embed Neo4j for testing by including a dependency on the Neo4j test harn
 
 dependency:neo4j-harness[groupId="org.neo4j.test", scope="test"]
 
+The Neo4j test harness also requires a runtime dependency on `javax.annotation`
+
+dependency:javax.annotation-api[groupId="javax.annotation", scope="testRuntimeOnly"]
+
 If the Neo4j server is not already running on the configured port an embedded version will be started.
 
 You can configure the options for the embedded Neo4j server using the `neo4j.embedded` settings exposed by api:neo4j.bolt.Neo4jBoltConfiguration[].

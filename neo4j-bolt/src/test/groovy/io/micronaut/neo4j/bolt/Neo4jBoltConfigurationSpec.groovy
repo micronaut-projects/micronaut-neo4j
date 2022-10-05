@@ -34,8 +34,8 @@ class Neo4jBoltConfigurationSpec extends Specification {
 
         then:
         applicationContext.containsBean(Neo4jBoltConfiguration)
-        applicationContext.getBean(Neo4jBoltConfiguration).uris.size() == 1
-        applicationContext.getBean(Neo4jBoltConfiguration).uris[0] == URI.create('bolt://someserver:7687')
+        applicationContext.getBean(Neo4jBoltConfiguration).uri
+        applicationContext.getBean(Neo4jBoltConfiguration).uri == URI.create('bolt://someserver:7687')
 
         cleanup:
         applicationContext?.stop()

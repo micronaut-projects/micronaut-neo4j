@@ -1,9 +1,9 @@
-- Micronaut Neo4j 6.x uses Neo4j 4.x. It supports Java 11 runtime versions, but does not work with Java 17. To use it in a Micronaut project the dependency needs to specify the `micronaut-neo4j-bolt` version.
-
-dependency::micronaut-neo4j-bolt[groupId="io.micronaut.neo4j", version="{version}"]
-
-- Micronaut Neo4j 5.x uses Neo4j 3.x. It supports Java 8 and 11 runtime versions. To use it in a Micronaut project the version is not required since that is exposed by the BOM.
+- Micronaut Neo4j 6.x uses the Neo4j Java Driver 5.x that adds support for Java 17 runtime versions. To use it in a Micronaut Framework project the version is not required since that is exposed by the BOM.
 
 dependency::micronaut-neo4j-bolt[groupId="io.micronaut.neo4j"]
 
-- A future major version of Neo4j (5.x) is expected to support Java 17.
+- Micronaut Neo4j 5.x uses Neo4j 3.x. It supports Java 8 and 11 runtime versions. To use it in a Micronaut Framework project the dependency needs to specify the `micronaut-neo4j-bolt` version.
+
+dependency::micronaut-neo4j-bolt[groupId="io.micronaut.neo4j", version="5.2.0"]
+
+To use it in a Micronaut Framework project the dependency needs to specify the `micronaut-neo4j-bolt` version.

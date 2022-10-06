@@ -1,6 +1,6 @@
 The configuration can be further customized with all the options available using the api:neo4j.bolt.Neo4jBoltConfiguration[] class.
 
-The `Neo4jBoltConfiguration` also exposes all the options for the `org.neo4j.driver.v1.Config.ConfigBuilder` class.
+The api:neo4j.bolt.Neo4jBoltConfiguration[] also exposes all the options for the `org.neo4j.driver.v1.Config.ConfigBuilder` class.
 
 Below represents an example configuration:
 

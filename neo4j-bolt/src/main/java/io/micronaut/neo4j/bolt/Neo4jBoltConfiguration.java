@@ -17,20 +17,21 @@ package io.micronaut.neo4j.bolt;
 
 import io.micronaut.context.annotation.ConfigurationBuilder;
 import io.micronaut.context.annotation.ConfigurationProperties;
+import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.core.util.Toggleable;
+import jakarta.inject.Inject;
 import org.neo4j.driver.AuthToken;
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Config;
 import org.neo4j.driver.Logging;
 
-import jakarta.inject.Inject;
+import javax.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -57,7 +58,7 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
     @ConfigurationBuilder(prefixes = "with", allowZeroArgs = true)
     protected Config.ConfigBuilder config = Config.builder();
 
-    private List<URI> uris = Collections.singletonList(URI.create(DEFAULT_URI));
+    private URI uri = URI.create(DEFAULT_URI);
     private AuthToken authToken;
     private String username;
     private String password;
@@ -75,19 +76,9 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
     /**
      * @return The Neo4j URIs
      */
-    public List<URI> getUris() {
-        return uris;
-    }
-
-    /**
-     * Set a {@link List} of Neo4J {@link URI}.
-     *
-     * @param uris The list of URIs
-     */
-    public void setUris(List<URI> uris) {
-        if (uris != null) {
-            this.uris = uris;
-        }
+    @NonNull
+    public URI getUri() {
+        return uri;
     }
 
     /**
@@ -95,10 +86,8 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
      *
      * @param uri A single Neo4j URI
      */
-    public void setUri(URI uri) {
-        if (uri != null) {
-            this.uris = Collections.singletonList(uri);
-        }
+    public void setUri(@NonNull @NotNull URI uri) {
+        this.uri = uri;
     }
 
     /**

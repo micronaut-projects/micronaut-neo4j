@@ -15,13 +15,15 @@
  */
 package io.micronaut.neo4j.bolt.embedded;
 
-import io.micronaut.neo4j.bolt.Neo4jBoltConfiguration;
-import io.micronaut.neo4j.bolt.Neo4jBoltSettings;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.context.event.BeanCreatedEvent;
 import io.micronaut.context.event.BeanCreatedEventListener;
 import io.micronaut.context.exceptions.ConfigurationException;
 import io.micronaut.core.io.socket.SocketUtils;
+import io.micronaut.neo4j.bolt.Neo4jBoltConfiguration;
+import io.micronaut.neo4j.bolt.Neo4jBoltSettings;
+import jakarta.annotation.PreDestroy;
+import jakarta.inject.Singleton;
 import org.neo4j.configuration.GraphDatabaseSettings;
 import org.neo4j.configuration.SettingImpl;
 import org.neo4j.configuration.SettingValueParsers;
@@ -33,15 +35,12 @@ import org.neo4j.harness.Neo4jBuilder;
 import org.neo4j.harness.Neo4jBuilders;
 import org.neo4j.server.ServerStartupException;
 
-import javax.annotation.PreDestroy;
-import jakarta.inject.Singleton;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 
@@ -61,40 +60,37 @@ public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltCo
     public Neo4jBoltConfiguration onCreated(BeanCreatedEvent<Neo4jBoltConfiguration> event) {
         Neo4jBoltConfiguration configuration = event.getBean();
 
-        List<URI> uris = configuration.getUris();
-        if (uris.size() == 1) {
-            URI uri = uris.get(0);
-            int port = uri.getPort();
-            Neo4jBoltConfiguration.Neo4jEmbeddedSettings embeddedSettings = configuration.getEmbeddedSettings();
-            if (port > -1 && SocketUtils.isTcpPortAvailable(port) && embeddedSettings.isEnabled()) {
-                // run embedded server, since it isn't up
-                final String location = embeddedSettings.getDirectory().orElse(null);
-                final Map<String, Object> options = embeddedSettings.getOptions();
-                final File dataDir;
-                try {
-                    if (location != null) {
-                        dataDir = new File(location);
-                    } else if (embeddedSettings.isEphemeral()) {
-                        dataDir = File.createTempFile("neo4j-temporary-data", "-tempdir");
-                    } else {
-                        dataDir = new File(Neo4jBoltSettings.DEFAULT_LOCATION);
-                    }
-                } catch (IOException e) {
-                    throw new ConfigurationException("Unable to create Neo4j temporary data directory: " + e.getMessage(), e);
+        URI uri = configuration.getUri();
+        int port = uri.getPort();
+        Neo4jBoltConfiguration.Neo4jEmbeddedSettings embeddedSettings = configuration.getEmbeddedSettings();
+        if (port > -1 && SocketUtils.isTcpPortAvailable(port) && embeddedSettings.isEnabled()) {
+            // run embedded server, since it isn't up
+            final String location = embeddedSettings.getDirectory().orElse(null);
+            final Map<String, Object> options = embeddedSettings.getOptions();
+            final File dataDir;
+            try {
+                if (location != null) {
+                    dataDir = new File(location);
+                } else if (embeddedSettings.isEphemeral()) {
+                    dataDir = File.createTempFile("neo4j-temporary-data", "-tempdir");
+                } else {
+                    dataDir = new File(Neo4jBoltSettings.DEFAULT_LOCATION);
                 }
-                if (embeddedSettings.isDropData() || embeddedSettings.isEphemeral()) {
-                    dataDir.delete();
-                }
-                if (embeddedSettings.isEphemeral()) {
-                    dataDir.deleteOnExit();
-                }
-                try {
-                    serverControls = start(uri.getHost(), uri.getPort(), dataDir, options);
-                    URI boltURI = serverControls.boltURI();
-                    configuration.setUri(boltURI);
-                } catch (Throwable e) {
-                    throw new ConfigurationException("Unable to start embedded Neo4j server: " + e.getMessage(), e);
-                }
+            } catch (IOException e) {
+                throw new ConfigurationException("Unable to create Neo4j temporary data directory: " + e.getMessage(), e);
+            }
+            if (embeddedSettings.isDropData() || embeddedSettings.isEphemeral()) {
+                dataDir.delete();
+            }
+            if (embeddedSettings.isEphemeral()) {
+                dataDir.deleteOnExit();
+            }
+            try {
+                serverControls = start(uri.getHost(), uri.getPort(), dataDir, options);
+                URI boltURI = serverControls.boltURI();
+                configuration.setUri(boltURI);
+            } catch (Throwable e) {
+                throw new ConfigurationException("Unable to start embedded Neo4j server: " + e.getMessage(), e);
             }
         }
 

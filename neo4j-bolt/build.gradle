@@ -5,6 +5,7 @@ plugins {
 dependencies {
     api(libs.managed.neo4j.java.driver)
     api(mn.micronaut.validation)
+    api(mn.micronaut.retry)
     api(mn.reactor)
     compileOnly(libs.managed.neo4j.harness)
     compileOnly(mn.micronaut.management)
@@ -12,20 +13,4 @@ dependencies {
     testImplementation(mn.micronaut.management)
     // neo4j-harness needs this
     testRuntimeOnly(mn.javax.annotation.api)
-}
-
-test {
-    // neo4j-harness uses neo4j-unsafe, which results in the error:
-    //     java.lang.IllegalAccessException: module java.base does not open java.nio to unnamed module @13c27452
-    // The following option allows this for Java 17
-    jvmArgs = ['--add-opens', 'java.base/java.nio=ALL-UNNAMED']
-    // A comment on the Neo4j Issue 12712 https://github.com/neo4j/neo4j/issues/12712
-    // states the following allows access to all the neo4j internal classes.
-    // Current tests don't seem to need it.
-//            ,'--add-opens', 'java.base/java.lang=ALL-UNNAMED'
-//            ,'--add-opens', 'java.base/java.io=ALL-UNNAMED'
-//            ,'--add-opens', 'java.base/java.util=ALL-UNNAMED'
-//            ,'--add-opens', 'java.base/java.util.concurrent=ALL-UNNAMED'
-//            ,'--add-opens', 'java.base/sun.net.www.protocol.http=ALL-UNNAMED'
-//            ,'--add-opens', 'java.base/sun.nio.ch=ALL-UNNAMED']
 }

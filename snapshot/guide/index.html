@@ -411,7 +411,7 @@ You can also create a <a href="https://docs.micronaut.io/latest/api/io/micronaut
 <div class="sect2">
 <h3 id="_micronaut_neo4j_6_0_0_snapshot">Micronaut Neo4J 6.0.0-SNAPSHOT</h3>
 <div class="paragraph">
-<p>Micronaut Neo4J is based on Neo4j 4.x, which has breaking changes from Neo4j 3.5.x used by previous versions of Micronaut Neo4J.</p>
+<p>Micronaut Neo4J is based on Neo4j 5.x, which has breaking changes from Neo4j 3.5.x used by previous versions of Micronaut Neo4J.</p>
 </div>
 <div class="paragraph">
 <p>For more information, refer to the following Neo4j guides:</p>
@@ -424,10 +424,13 @@ You can also create a <a href="https://docs.micronaut.io/latest/api/io/micronaut
 <li>
 <p><a href="https://neo4j.com/docs/upgrade-migration-guide/current/migration/surface-changes/">Breaking changes between Neo4j 3.5 and Neo4j 4.x</a></p>
 </li>
+<li>
+<p><a href="https://neo4j.com/docs/upgrade-migration-guide/current/version-5/migration/breaking-changes/">Breaking changes between Neo4j 4.4 and Neo4j 5.x</a></p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Neo4J Java Driver 5.0.0 adds compatibility for Java 17</p>
+<p>Neo4J Java Driver 5.x adds compatibility for Java 17</p>
 </div>
 <div class="ulist">
 <ul>
@@ -438,8 +441,7 @@ You can also create a <a href="https://docs.micronaut.io/latest/api/io/micronaut
 </ul>
 </div>
 <div class="paragraph">
-<p>Neo4J Harness
-- Using the Neo4j Harness requires the following JVM args: <code>--add-opens java.base/java.nio=ALL-UNNAMED</code> to prevent the error "java.lang.IllegalAccessException: module java.base does not open java.nio to unnamed module&#8230;&#8203;". For example,</p>
+<p>Neo4J Harness 5.x adds compatibility for Java 17</p>
 </div>
 <div class="listingblock">
 <div class="title">build.gradle</div>

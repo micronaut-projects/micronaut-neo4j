@@ -1,6 +1,6 @@
 [versions]
 
-managed-neo4j = "5.1.0"
+managed-neo4j = "5.2.0"
 managed-neo4j-driver = "5.2.0"
 
 # Micronaut

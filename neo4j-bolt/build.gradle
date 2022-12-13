@@ -12,5 +12,5 @@ dependencies {
     testImplementation(libs.managed.neo4j.harness)
     testImplementation(mn.micronaut.management)
     // neo4j-harness needs this
-    testRuntimeOnly(mn.javax.annotation.api)
+    testRuntimeOnly(libs.javax.annotation.api)
 }

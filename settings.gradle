@@ -14,13 +14,7 @@ rootProject.name = 'neo4j-parent'
 include "neo4j-bom"
 include 'neo4j-bolt'
 
-dependencyResolutionManagement {
-    repositories {
-        mavenCentral()
-        maven { url("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
-    }
-}
-
 micronautBuild {
+    addSnapshotRepository()
     importMicronautCatalog()
 }

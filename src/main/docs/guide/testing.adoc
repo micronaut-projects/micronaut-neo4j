@@ -6,10 +6,10 @@ If the Neo4j server is not already running on the configured port an embedded ve
 
 You can configure the options for the embedded Neo4j server using the `neo4j.embedded` settings exposed by api:neo4j.bolt.Neo4jBoltConfiguration[].
 
-One useful option is `ephemeral` which ensures the data is cleaned up between test runs. For example in `application-test.yml`:
+One useful option is `ephemeral` which ensures the data is cleaned up between test runs. For example in the `application-test` configuration file:
 
 .Using ephemeral
-[source,yaml]
+[configuration]
 ----
 neo4j:
     embedded:

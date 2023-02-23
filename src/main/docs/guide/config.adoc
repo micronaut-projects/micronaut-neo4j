@@ -5,7 +5,7 @@ The `Neo4jBoltConfiguration` also exposes all the options for the `org.neo4j.dri
 Below represents an example configuration:
 
 .Customizing the Bolt Configuration
-[source,yaml]
+[configuration]
 ----
 neo4j:
     uri: bolt://localhost

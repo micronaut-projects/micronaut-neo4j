@@ -3,12 +3,17 @@ plugins {
 }
 
 dependencies {
+    annotationProcessor(mnValidation.micronaut.validation.processor)
+
     api(libs.managed.neo4j.java.driver)
-    api(mn.micronaut.validation)
+    api(mnValidation.micronaut.validation)
     api(mn.micronaut.retry)
     api(mn.reactor)
+
     compileOnly(libs.managed.neo4j.harness)
     compileOnly(mn.micronaut.management)
+
+    testCompileOnly(mnValidation.micronaut.validation.processor)
     testImplementation(libs.managed.neo4j.harness)
     testImplementation(mn.micronaut.management)
     // neo4j-harness needs this

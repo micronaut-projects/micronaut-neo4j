@@ -27,7 +27,7 @@ import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Config;
 import org.neo4j.driver.Logging;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;

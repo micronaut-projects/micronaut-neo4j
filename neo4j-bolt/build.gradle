@@ -16,6 +16,8 @@ dependencies {
     testCompileOnly(mnValidation.micronaut.validation.processor)
     testImplementation(libs.managed.neo4j.harness)
     testImplementation(mn.micronaut.management)
+
     // neo4j-harness needs this
     testRuntimeOnly(libs.javax.annotation.api)
+    testRuntimeOnly(libs.javax.validation.api)
 }

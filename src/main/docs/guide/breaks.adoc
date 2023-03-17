@@ -26,6 +26,7 @@ test {
 }
 ----
 
-Starting with Micronaut Framework 4.0.0 the Neo4j Harness requires a runtime dependency on `javax.annotation`
+Starting with Micronaut Framework 4.0.0 the Neo4j Harness requires a runtime dependency on `javax.annotation` and `javax.validation`
 
-dependency:javax.annotation-api[groupId="javax.annotation", scope="testRuntimeOnly"]
+dependency:javax.annotation-api[version="1.3.2", groupId="javax.annotation", scope="testRuntimeOnly"]
+dependency:validation-api[version="2.0.1.Final", groupId="javax.validation", scope="testRuntimeOnly"]

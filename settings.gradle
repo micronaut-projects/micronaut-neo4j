@@ -15,7 +15,6 @@ include "neo4j-bom"
 include 'neo4j-bolt'
 
 micronautBuild {
-    addSnapshotRepository()
     useStandardizedProjectNames = true
     importMicronautCatalog()
     importMicronautCatalog("micronaut-validation")

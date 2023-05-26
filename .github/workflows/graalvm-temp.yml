@@ -31,4 +31,4 @@ jobs:
         shell: bash
         run: |
           gradleTasks = $(./gradlew tasks --no-daemon --all)
-          echo $gradleTasks
+          echo "$gradleTasks"

@@ -30,5 +30,4 @@ jobs:
       - name: "Set Matrix"
         shell: bash
         run: |
-          nativeTestTasks=$(./gradlew tasks --no-daemon --all | grep -w "nativeTest")
-          echo $nativeTestTasks
+          ./gradlew tasks --no-daemon --all | grep -w "nativeTest"

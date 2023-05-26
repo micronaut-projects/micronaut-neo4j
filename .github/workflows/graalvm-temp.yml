@@ -31,7 +31,7 @@ jobs:
         shell: bash
         run: |
           gradleTasks=$(./gradlew tasks --no-daemon --all)
-          nativeTestTasks=$(echo "$gradleTasks" | grep -w "nativeTest")
-
-
-          echo $nativeTestTasks
+          if [[ "$gradleTasks" == *"nativeTest"* ]]; then
+            echo "Works"
+          fi
+          echo "Done"

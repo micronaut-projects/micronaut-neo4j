@@ -12,9 +12,23 @@ jobs:
       GRADLE_ENTERPRISE_CACHE_USERNAME: ${{ secrets.GRADLE_ENTERPRISE_CACHE_USERNAME }}
       GRADLE_ENTERPRISE_CACHE_PASSWORD: ${{ secrets.GRADLE_ENTERPRISE_CACHE_PASSWORD }}
     steps:
-      - name: "Test Shell Execution"
+      - name: "Checkout repository"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: "Setup GraalVM CE"
+        uses: graalvm/setup-graalvm@v1
+        with:
+          version: ${{ inputs.graalvm }}
+          java-version: ${{ inputs.java }}
+          components: 'native-image'
+
+      - name: "Setup Gradle"
+        uses: gradle/gradle-build-action@v2
+
+      - name: "Set Matrix"
         shell: bash
         run: |
-          echo "Test started"
           nativeTestTasks=$(./gradlew tasks --no-daemon --all | grep -w "nativeTest")
           echo $nativeTestTasks

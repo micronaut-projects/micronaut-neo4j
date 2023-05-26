@@ -22,7 +22,7 @@ jobs:
           graalvm: 'latest'
           java: '17'
   build:
-    if: github.repository != 'micronaut-projects/micronaut-project-template'
+    if: github.repository != 'micronaut-projects/micronaut-project-template' && ${{ needs.build_matrix.outputs.run-native-tests }} == 'true'
     runs-on: ubuntu-latest
     needs: build_matrix
     strategy:

@@ -11,27 +11,45 @@ jobs:
       GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
       GRADLE_ENTERPRISE_CACHE_USERNAME: ${{ secrets.GRADLE_ENTERPRISE_CACHE_USERNAME }}
       GRADLE_ENTERPRISE_CACHE_PASSWORD: ${{ secrets.GRADLE_ENTERPRISE_CACHE_PASSWORD }}
+    outputs:
+      matrix: ${{ steps.build-matrix.outputs.matrix }}
     steps:
-      - name: "Checkout repository"
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - name: Build Matrix
+        uses: micronaut-projects/github-actions/graalvm/build-matrix@parallel-native-tests
+        id: build-matrix
         with:
-          fetch-depth: 0
-
-      - name: "Setup GraalVM CE"
-        uses: graalvm/setup-graalvm@v1
+          graalvm: 'latest'
+          java: '17'
+  build:
+    needs: build_matrix
+    if: github.repository != 'micronaut-projects/micronaut-project-template' && ${{ needs.build_matrix.outputs.run-native-tests }} == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 6
+      matrix: ${{fromJson(needs.build_matrix.outputs.matrix)}}
+    env:
+      GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+      GRADLE_ENTERPRISE_CACHE_USERNAME: ${{ secrets.GRADLE_ENTERPRISE_CACHE_USERNAME }}
+      GRADLE_ENTERPRISE_CACHE_PASSWORD: ${{ secrets.GRADLE_ENTERPRISE_CACHE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Pre-Build Steps
+        uses: micronaut-projects/github-actions/graalvm/pre-build@master
+        id: pre-build
         with:
-          version: 'latest'
-          java-version: '17'
-          components: 'native-image'
-
-      - name: "Setup Gradle"
-        uses: gradle/gradle-build-action@v2
-
-      - name: "Set Matrix"
-        shell: bash
-        run: |
-          gradleTasks=$(./gradlew tasks --no-daemon --all)
-          if [[ "$gradleTasks" == *"nativeTest"* ]]; then
-            echo "Works"
-          fi
-          echo "Done"
+          graalvm: ${{ matrix.graalvm }}
+          java: ${{ matrix.java }}
+      - name: Build Steps
+        uses: micronaut-projects/github-actions/graalvm/build@parallel-native-tests
+        id: build
+        env:
+          GH_TOKEN_PUBLIC_REPOS_READONLY: ${{ secrets.GH_TOKEN_PUBLIC_REPOS_READONLY }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+        with:
+          nativeTestTask: ${{ matrix.native_test_task }}
+      - name: Post-Build Steps
+        uses: micronaut-projects/github-actions/graalvm/post-build@master
+        id: post-build
+        with:
+          java: ${{ matrix.java }}

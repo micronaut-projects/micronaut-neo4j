@@ -30,4 +30,5 @@ jobs:
       - name: "Set Matrix"
         shell: bash
         run: |
-          ./gradlew tasks --no-daemon --all
+          gradleTasks = $(./gradlew tasks --no-daemon --all)
+          echo $gradleTasks

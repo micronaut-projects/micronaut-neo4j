@@ -182,11 +182,11 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRetryDelay()" class="member-name-link">getRetryDelay</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>@NonNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUri()" class="member-name-link">getUri</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAuthToken(org.neo4j.driver.AuthToken)" class="member-name-link">setAuthToken</a><wbr>(org.neo4j.driver.AuthToken&nbsp;authToken)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAuthToken(org.neo4j.driver.AuthToken)" class="member-name-link">setAuthToken</a><wbr>(@Nullable org.neo4j.driver.AuthToken&nbsp;authToken)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setEmbeddedSettings(io.micronaut.neo4j.bolt.Neo4jBoltConfiguration.Neo4jEmbeddedSettings)" class="member-name-link">setEmbeddedSettings</a><wbr>(<a href="Neo4jBoltConfiguration.Neo4jEmbeddedSettings.html" title="class in io.micronaut.neo4j.bolt">Neo4jBoltConfiguration.Neo4jEmbeddedSettings</a>&nbsp;embeddedSettings)</code></div>
@@ -208,7 +208,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTrustStrategy(org.neo4j.driver.Config.TrustStrategy)" class="member-name-link">setTrustStrategy</a><wbr>(org.neo4j.driver.Config.TrustStrategy&nbsp;trustStrategy)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setUri(java.net.URI)" class="member-name-link">setUri</a><wbr>(@NotNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a>&nbsp;uri)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setUri(java.net.URI)" class="member-name-link">setUri</a><wbr>(@NonNull @NotNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a>&nbsp;uri)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Set a single <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link"><code>URI</code></a>.</div>
 </div>
@@ -297,7 +297,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <section class="detail" id="getUri()">
 <h3>getUri</h3>
 <div class="member-signature"><span class="annotations">@NonNull
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a></span>&nbsp;<span class="element-name">getUri</span>()</div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">@NonNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a></span>&nbsp;<span class="element-name">getUri</span>()</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>The Neo4j URIs</dd>
@@ -308,7 +308,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <section class="detail" id="setUri(java.net.URI)">
 <h3>setUri</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setUri</span><wbr><span class="parameters">(@NonNull @NotNull
- @NotNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a>&nbsp;uri)</span></div>
+ @NonNull @NotNull <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a>&nbsp;uri)</span></div>
 <div class="block">Set a single <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link"><code>URI</code></a>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -399,7 +399,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <h3>setAuthToken</h3>
 <div class="member-signature"><span class="annotations">@Inject
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAuthToken</span><wbr><span class="parameters">(@Nullable
- org.neo4j.driver.AuthToken&nbsp;authToken)</span></div>
+ @Nullable org.neo4j.driver.AuthToken&nbsp;authToken)</span></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>authToken</code> - The <code>AuthToken</code></dd>

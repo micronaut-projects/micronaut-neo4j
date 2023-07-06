@@ -1,7 +1,7 @@
 [versions]
 micronaut-docs = "2.0.0"
-micronaut = "4.0.0-RC4"
-micronaut-test = "4.0.0-M6"
+micronaut = "4.0.0-RC5"
+micronaut-test = "4.0.0-M9"
 groovy = "4.0.11"
 spock = "2.3-groovy-4.0"
 
@@ -12,7 +12,7 @@ managed-neo4j-driver = "5.10.0"
 javax-annotation-api = "1.3.2"
 javax-validation-api = "2.0.1.Final"
 
-micronaut-validation = "4.0.0-M11"
+micronaut-validation = "4.0.0-M12"
 
 [libraries]
 # Core

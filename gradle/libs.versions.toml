@@ -5,7 +5,7 @@ micronaut-test = "4.0.0"
 groovy = "4.0.13"
 spock = "2.3-groovy-4.0"
 
-managed-neo4j = "5.9.0"
+managed-neo4j = "5.10.0"
 managed-neo4j-driver = "5.10.0"
 
 #neo4j-harness needs the javax apis at runtime

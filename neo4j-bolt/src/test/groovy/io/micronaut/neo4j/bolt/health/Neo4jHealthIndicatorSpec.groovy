@@ -43,7 +43,8 @@ class Neo4jHealthIndicatorSpec extends Specification {
         then:
         result.status == HealthStatus.UP
         result.details.server instanceof String
-        result.details.server.matches "Neo4j/\\d\\.\\d\\.\\d.*"
+        // neo4j-driver 5.10.0 changes server string to embed version, e.g. Neo4j/5.10.0@127.0.0.1:52527
+        result.details.server.matches "Neo4j/(?:\\d+\\.\\d+\\.\\d+@)?\\d+\\.\\d+\\.\\d+\\.\\d+:\\d+"
 
         when:
         applicationContext.getBean(EmbeddedNeo4jServer).close()

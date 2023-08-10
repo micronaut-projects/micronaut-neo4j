@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2018 original authors
+ * Copyright 2017-2023 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package io.micronaut.neo4j.bolt
 
+import io.micronaut.context.DefaultApplicationContext
+import io.micronaut.context.env.MapPropertySource
 import org.neo4j.driver.Driver
 import io.micronaut.context.ApplicationContext
 import io.micronaut.core.io.socket.SocketUtils
+import org.testcontainers.containers.Neo4jContainer
+import org.testcontainers.utility.DockerImageName
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -54,6 +57,29 @@ class Neo4jEmbeddedServerSpec extends Specification{
             'neo4j.uri':"bolt://localhost:${EMBEDDED_NEO4J_TCP_PORT}",
             'neo4j.embedded.ephemeral':true
         )
+
+        when:
+        Driver driver = applicationContext.getBean(Driver)
+
+        then:
+        driver.session().run('MATCH (n) RETURN n').size() == 0
+
+        cleanup:
+        applicationContext?.stop()
+    }
+
+    void "test neo4j testcontainer"() {
+        given:
+        Neo4jContainer neo4jContainer = new Neo4jContainer(DockerImageName.parse("neo4j:latest"))
+                .withoutAuthentication()
+        neo4jContainer.start()
+
+        ApplicationContext applicationContext = new DefaultApplicationContext("test")
+        applicationContext.environment.addPropertySource(MapPropertySource.of(
+                'test',
+                ['neo4j.uri' : "bolt://localhost:${neo4jContainer.firstMappedPort}"]
+        ))
+        applicationContext.start()
 
         when:
         Driver driver = applicationContext.getBean(Driver)

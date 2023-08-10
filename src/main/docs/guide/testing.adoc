@@ -1,3 +1,15 @@
+=== Using Testcontainers Neo4j
+
+The recommended mechanism for testing `micronaut-neo4j` is https://java.testcontainers.org/modules/databases/neo4j/[Testcontainers Neo4j]. It utilizes the https://hub.docker.com/_/neo4j/[official docker image] provided by Neo4j, Inc.
+
+To use it include the following dependency in your project:
+
+dependency:neo4j[groupId="org.testcontainers", version="1.18.3", scope="test"]
+
+=== Using the Neo4J Test Harness
+
+NOTE: Use of the Neo4J Test Harness is deprecated for Micronaut Framework and direct integration for it (i.e. the embedded version mentioned below) will be removed in the next major version of `micronaut-neo4j`.
+
 You can embed Neo4j for testing by including a dependency on the Neo4j test harness:
 
 dependency:neo4j-harness[groupId="org.neo4j.test", scope="test"]

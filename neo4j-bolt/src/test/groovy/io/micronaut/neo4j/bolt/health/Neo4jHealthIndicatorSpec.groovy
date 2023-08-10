@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2018 original authors
+ * Copyright 2017-2023 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,14 @@
 
 package io.micronaut.neo4j.bolt.health
 
-import io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer
 import io.micronaut.context.ApplicationContext
-import io.micronaut.core.io.socket.SocketUtils
+import io.micronaut.context.DefaultApplicationContext
+import io.micronaut.context.env.MapPropertySource
 import io.micronaut.health.HealthStatus
 import io.micronaut.management.health.indicator.HealthResult
+import io.micronaut.neo4j.bolt.Neo4jBoltConfiguration
+import org.testcontainers.containers.Neo4jContainer
+import org.testcontainers.utility.DockerImageName
 import reactor.core.publisher.Mono
 import spock.lang.Specification
 
@@ -29,25 +32,37 @@ import spock.lang.Specification
  * @since 1.0
  */
 class Neo4jHealthIndicatorSpec extends Specification {
+
     void "test neo4j health indicator"() {
         given:
-        ApplicationContext applicationContext = ApplicationContext.run(
-                'neo4j.uri':"bolt://localhost:${SocketUtils.findAvailableTcpPort()}",
-                'neo4j.embedded.ephemeral':true
-        )
+        Neo4jContainer neo4jContainer = new Neo4jContainer(DockerImageName.parse("neo4j:latest"))
+            .withoutAuthentication()
+        neo4jContainer.start()
+
+        ApplicationContext applicationContext = new DefaultApplicationContext("test")
+        applicationContext.environment.addPropertySource(MapPropertySource.of(
+                'test',
+                ['neo4j.uri' : "bolt://localhost:${neo4jContainer.firstMappedPort}"]
+        ))
+        applicationContext.start()
+
+        expect:
+        applicationContext.containsBean(Neo4jBoltConfiguration)
 
         when:
-        Neo4jHealthIndicator indicator = applicationContext.getBean(Neo4jHealthIndicator)
-        HealthResult result = Mono.from(indicator.getResult()).block()
+        Neo4jHealthIndicator healthIndicator = applicationContext.getBean(Neo4jHealthIndicator)
+        HealthResult result = Mono.from(healthIndicator.result).block()
 
         then:
         result.status == HealthStatus.UP
         result.details.server instanceof String
-        result.details.server.matches "Neo4j/\\d\\.\\d\\.\\d.*"
+        // neo4j-driver 5.10.0 changes server string to embed version,
+        // e.g. Neo4j/5.10.0@127.0.0.1:52527 or Neo4j/5.10.0@localhost:52527
+        result.details.server.matches "Neo4j/(?:\\d+\\.\\d+\\.\\d+@)?.*:\\d+"
 
         when:
-        applicationContext.getBean(EmbeddedNeo4jServer).close()
-        result = Mono.from(indicator.getResult()).block()
+        neo4jContainer.stop()
+        result = Mono.from(healthIndicator.result).block()
 
         then:
         result.status == HealthStatus.DOWN

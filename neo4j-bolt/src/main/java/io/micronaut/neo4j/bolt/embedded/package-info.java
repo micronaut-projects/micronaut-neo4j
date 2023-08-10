@@ -21,6 +21,6 @@
  *
  * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
  */
-@Deprecated
+@Deprecated(since = "6.0.2", forRemoval = true)
 package io.micronaut.neo4j.bolt.embedded;
 

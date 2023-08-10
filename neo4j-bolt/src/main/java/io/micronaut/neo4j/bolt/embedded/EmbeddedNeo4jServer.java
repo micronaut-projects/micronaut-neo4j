@@ -52,7 +52,7 @@ import java.util.Map;
  *
  * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
  */
-@Deprecated
+@Deprecated(since = "6.0.2", forRemoval = true)
 @Singleton
 @Requires(classes = Neo4j.class)
 public class EmbeddedNeo4jServer implements BeanCreatedEventListener<Neo4jBoltConfiguration>, Closeable {

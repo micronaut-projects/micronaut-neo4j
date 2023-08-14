@@ -70,7 +70,7 @@ class Neo4jEmbeddedServerSpec extends Specification{
 
     void "test neo4j testcontainer"() {
         given:
-        Neo4jContainer neo4jContainer = new Neo4jContainer(DockerImageName.parse("neo4j:latest"))
+        Neo4jContainer neo4jContainer = new Neo4jContainer(DockerImageName.parse("neo4j:4.4.24"))
                 .withoutAuthentication()
         neo4jContainer.start()
 

@@ -18,14 +18,6 @@ https://neo4j.com/docs/javascript-manual/current/client-applications/#js-initial
 
 Neo4J Harness 5.x adds compatibility for Java 17
 
-.build.gradle
-[source,groovy]
-----
-test {
-    jvmArgs = ['--add-opens', 'java.base/java.nio=ALL-UNNAMED']
-}
-----
-
 Starting with Micronaut Framework 4.0.0 the Neo4j Harness requires a runtime dependency on `javax.annotation` and `javax.validation`
 
 dependency:javax.annotation-api[version="1.3.2", groupId="javax.annotation", scope="testRuntimeOnly"]

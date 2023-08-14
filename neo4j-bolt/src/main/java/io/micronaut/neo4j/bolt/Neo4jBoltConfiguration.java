@@ -198,8 +198,11 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
 
     /**
      * The configuration settings for the embedded Neo4j.
+     *
+     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
      */
     @ConfigurationProperties("embedded")
+    @Deprecated(since = "6.0.2", forRemoval = true)
     public static class Neo4jEmbeddedSettings implements Toggleable {
         /**
          * The default enable value.

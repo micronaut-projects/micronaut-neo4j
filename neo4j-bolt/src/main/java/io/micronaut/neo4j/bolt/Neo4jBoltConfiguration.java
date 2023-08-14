@@ -64,6 +64,11 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
     private String password;
     private int retryCount = DEFAULT_RETRYCOUNT;
     private Duration retryDelay = Duration.of(DEFAULT_RETRYDELAY_SECONDS, ChronoUnit.SECONDS);
+
+    /**
+     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
+     */
+    @Deprecated(since = "6.0.2", forRemoval = true)
     private Neo4jEmbeddedSettings embeddedSettings = new Neo4jEmbeddedSettings();
 
     /**
@@ -183,14 +188,18 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
 
     /**
      * @return The settings for the embedded Neo4j server
+     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
      */
+    @Deprecated(since = "6.0.2", forRemoval = true)
     public Neo4jEmbeddedSettings getEmbeddedSettings() {
         return embeddedSettings;
     }
 
     /**
      * @param embeddedSettings The {@link Neo4jEmbeddedSettings}
+     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
      */
+    @Deprecated(since = "6.0.2", forRemoval = true)
     @Inject
     public void setEmbeddedSettings(Neo4jEmbeddedSettings embeddedSettings) {
         this.embeddedSettings = embeddedSettings;
@@ -198,8 +207,11 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
 
     /**
      * The configuration settings for the embedded Neo4j.
+     *
+     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
      */
     @ConfigurationProperties("embedded")
+    @Deprecated(since = "6.0.2", forRemoval = true)
     public static class Neo4jEmbeddedSettings implements Toggleable {
         /**
          * The default enable value.

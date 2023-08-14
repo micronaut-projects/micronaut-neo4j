@@ -18,6 +18,9 @@
  *
  * @author graemerocher
  * @since 1.0
+ *
+ * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
  */
+@Deprecated(since = "6.0.2", forRemoval = true)
 package io.micronaut.neo4j.bolt.embedded;
 

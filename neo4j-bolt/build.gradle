@@ -10,14 +10,18 @@ dependencies {
     api(mn.micronaut.retry)
     api(mn.reactor)
 
-    compileOnly(libs.managed.neo4j.harness)
     compileOnly(mn.micronaut.management)
 
+    // EmbeddedNeo4jServer needs this, remove when class is removed
+    compileOnly(libs.managed.neo4j.harness)
+
     testCompileOnly(mnValidation.micronaut.validation.processor)
-    testImplementation(libs.managed.neo4j.harness)
+    testImplementation(libs.testcontainers.spock)
+    testImplementation(libs.testcontainers.neo4j)
     testImplementation(mn.micronaut.management)
 
-    // neo4j-harness needs this
+    // Neo4jEmbeddedServerSpec needs this, remove when EmbeddedNeo4jServer and tests that use are removed
+    testImplementation(libs.managed.neo4j.harness)
     testRuntimeOnly(libs.javax.annotation.api)
     testRuntimeOnly(libs.javax.validation.api)
 }

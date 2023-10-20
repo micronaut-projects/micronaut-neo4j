@@ -10,7 +10,7 @@ managed-neo4j-driver = "5.13.0"
 
 # neo4j-harness needs the javax apis at runtime
 # remove these after EmbeddedNeo4jServer is removed
-managed-neo4j = "5.12.0"
+managed-neo4j = "5.13.0"
 javax-annotation-api = "1.3.2"
 javax-validation-api = "2.0.1.Final"
 

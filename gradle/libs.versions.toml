@@ -6,7 +6,7 @@ groovy = "4.0.13"
 spock = "2.3-groovy-4.0"
 testcontainers = "1.19.3"
 
-managed-neo4j-driver = "5.14.0"
+managed-neo4j-driver = "5.15.0"
 
 # neo4j-harness needs the javax apis at runtime
 # remove these after EmbeddedNeo4jServer is removed

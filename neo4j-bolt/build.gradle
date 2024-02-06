@@ -16,8 +16,7 @@ dependencies {
     compileOnly(libs.managed.neo4j.harness)
 
     testCompileOnly(mnValidation.micronaut.validation.processor)
-    testImplementation(libs.testcontainers.spock)
-    testImplementation(libs.testcontainers.neo4j)
+    testImplementation(mnTestResources.testcontainers.neo4j)
     testImplementation(mn.micronaut.management)
 
     // Neo4jEmbeddedServerSpec needs this, remove when EmbeddedNeo4jServer and tests that use are removed

@@ -17,5 +17,6 @@ include 'neo4j-bolt'
 micronautBuild {
     useStandardizedProjectNames = true
     importMicronautCatalog()
+    importMicronautCatalog("micronaut-test-resources")
     importMicronautCatalog("micronaut-validation")
 }

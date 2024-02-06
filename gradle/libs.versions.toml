@@ -4,7 +4,6 @@ micronaut = "4.2.3"
 micronaut-test = "4.0.0"
 groovy = "4.0.13"
 spock = "2.3-groovy-4.0"
-testcontainers = "1.19.3"
 
 managed-neo4j-driver = "5.16.0"
 
@@ -14,6 +13,7 @@ managed-neo4j = "5.15.0"
 javax-annotation-api = "1.3.2"
 javax-validation-api = "2.0.1.Final"
 
+micronaut-test-resources = "2.3.3"
 micronaut-validation = "4.2.0"
 
 [libraries]
@@ -22,13 +22,11 @@ micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'mi
 
 managed-neo4j-java-driver = { module = "org.neo4j.driver:neo4j-java-driver", version.ref = "managed-neo4j-driver" }
 
-testcontainers-neo4j = { module = "org.testcontainers:neo4j", version.ref = "testcontainers" }
-testcontainers-spock = { module = "org.testcontainers:spock", version.ref = "testcontainers" }
-
 # deprecated for micronaut-neo4j 6.0.2, remove this with the next major version
 managed-neo4j-harness = { module = "org.neo4j.test:neo4j-harness", version.ref = "managed-neo4j" }
 javax-annotation-api = {group = "javax.annotation", name = "javax.annotation-api", version.ref = "javax-annotation-api" }
 javax-validation-api = {group = "javax.validation", name = "validation-api", version.ref = "javax-validation-api" }
 
+micronaut-test-resources = { module = "io.micronaut.testresources:micronaut-test-resources-bom", version.ref = "micronaut-test-resources" }
 micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
 

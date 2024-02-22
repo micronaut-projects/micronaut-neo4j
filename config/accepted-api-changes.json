@@ -1,0 +1,172 @@
+[
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Constructor io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference()",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationSource",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanContextConditional",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataProvider",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.beans.BeanInfo",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataDelegate",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadata",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.QualifiedBeanType",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.type.ArgumentCoercible",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanType",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanDefinitionReference",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Constructor io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference()",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationSource",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanContextConditional",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataProvider",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.beans.BeanInfo",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataDelegate",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadata",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.QualifiedBeanType",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.type.ArgumentCoercible",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanType",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanDefinitionReference",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Constructor io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer()",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Implemented interface java.util.EventListener",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Implemented interface java.io.Closeable",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Implemented interface io.micronaut.context.event.BeanCreatedEventListener",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Implemented interface java.lang.AutoCloseable",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Field DEFAULT_DROPDATA",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Field DEFAULT_ENABLED",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Field DEFAULT_EPHEMERAL",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Constructor io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings()",
+    "reason": "Provide a human readable reason for the change"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Implemented interface io.micronaut.core.util.Toggleable",
+    "reason": "Provide a human readable reason for the change"
+  }
+]

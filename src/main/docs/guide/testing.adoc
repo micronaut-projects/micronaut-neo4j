@@ -4,31 +4,4 @@ The recommended mechanism for testing `micronaut-neo4j` is https://java.testcont
 
 To use it include the following dependency in your project:
 
-dependency:neo4j[groupId="org.testcontainers", version="1.18.3", scope="test"]
-
-=== Using the Neo4J Test Harness
-
-NOTE: Use of the Neo4J Test Harness is deprecated for Micronaut Framework and direct integration for it (i.e. the embedded version mentioned below) will be removed in the next major version of `micronaut-neo4j`.
-
-You can embed Neo4j for testing by including a dependency on the Neo4j test harness:
-
-dependency:neo4j-harness[groupId="org.neo4j.test", scope="test"]
-
-The Neo4j test harness also requires a runtime dependency on `javax.annotation` and `javax.validation`
-
-dependency:javax.annotation-api[version="1.3.2", groupId="javax.annotation", scope="testRuntimeOnly"]
-dependency:validation-api[version="2.0.1.Final", groupId="javax.validation", scope="testRuntimeOnly"]
-
-If the Neo4j server is not already running on the configured port an embedded version will be started.
-
-You can configure the options for the embedded Neo4j server using the `neo4j.embedded` settings exposed by api:neo4j.bolt.Neo4jBoltConfiguration[].
-
-One useful option is `ephemeral` which ensures the data is cleaned up between test runs. For example in `application-test.yml`:
-
-.Using ephemeral
-[source,yaml]
-----
-neo4j:
-    embedded:
-        ephemeral: true
-----
+dependency:neo4j[groupId="org.testcontainers", version="1.19.6", scope="test"]

@@ -5,9 +5,6 @@ plugins {
 micronautBom {
     suppressions {
         acceptedLibraryRegressions.add("neo4j")
-        acceptedLibraryRegressions.add("neo4j-bolt")
-
-        acceptedVersionRegressions.add("neo4j-compat")
-        acceptedVersionRegressions.add("neo4j-driver-compat")
+        acceptedLibraryRegressions.add("neo4j-harness")
     }
 }

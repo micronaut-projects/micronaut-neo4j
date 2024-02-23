@@ -4,7 +4,7 @@ plugins {
 
 micronautBom {
     suppressions {
-        acceptedLibraryRegressions.add("neo4j")
+        acceptedVersionRegressions.add("neo4j")
         acceptedLibraryRegressions.add("neo4j-harness")
     }
 }

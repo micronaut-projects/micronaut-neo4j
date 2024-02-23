@@ -29,7 +29,7 @@ import spock.lang.Specification
  * @author graemerocher
  * @since 1.0
  */
-class Neo4jServerSpec extends Specification{
+class Neo4jServerSpec extends Specification {
 
     void "test neo4j testcontainer"() {
         given:

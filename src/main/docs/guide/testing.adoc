@@ -4,4 +4,4 @@ The recommended mechanism for testing `micronaut-neo4j` is https://java.testcont
 
 To use it include the following dependency in your project:
 
-dependency:neo4j[groupId="org.testcontainers", version="1.19.6", scope="test"]
+dependency:neo4j[groupId="org.testcontainers", scope="test"]

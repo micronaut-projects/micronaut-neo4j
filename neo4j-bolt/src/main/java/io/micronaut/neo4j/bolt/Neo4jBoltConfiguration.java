@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2020 original authors
+ * Copyright 2017-2024 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,19 +20,16 @@ import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.util.StringUtils;
-import io.micronaut.core.util.Toggleable;
 import jakarta.inject.Inject;
+import jakarta.validation.constraints.NotNull;
 import org.neo4j.driver.AuthToken;
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Config;
 import org.neo4j.driver.Logging;
 
-import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.util.Collections;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -64,12 +61,6 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
     private String password;
     private int retryCount = DEFAULT_RETRYCOUNT;
     private Duration retryDelay = Duration.of(DEFAULT_RETRYDELAY_SECONDS, ChronoUnit.SECONDS);
-
-    /**
-     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
-     */
-    @Deprecated(since = "6.0.2", forRemoval = true)
-    private Neo4jEmbeddedSettings embeddedSettings = new Neo4jEmbeddedSettings();
 
     /**
      * Constructor.
@@ -183,134 +174,6 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
     public void setTrustStrategy(@Nullable Config.TrustStrategy trustStrategy) {
         if (trustStrategy != null) {
             this.config.withTrustStrategy(trustStrategy);
-        }
-    }
-
-    /**
-     * @return The settings for the embedded Neo4j server
-     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
-     */
-    @Deprecated(since = "6.0.2", forRemoval = true)
-    public Neo4jEmbeddedSettings getEmbeddedSettings() {
-        return embeddedSettings;
-    }
-
-    /**
-     * @param embeddedSettings The {@link Neo4jEmbeddedSettings}
-     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
-     */
-    @Deprecated(since = "6.0.2", forRemoval = true)
-    @Inject
-    public void setEmbeddedSettings(Neo4jEmbeddedSettings embeddedSettings) {
-        this.embeddedSettings = embeddedSettings;
-    }
-
-    /**
-     * The configuration settings for the embedded Neo4j.
-     *
-     * @deprecated Use testcontainers instead. See <a href="https://testcontainers.com/modules/neo4j/">Testcontainers Neo4j</a>
-     */
-    @ConfigurationProperties("embedded")
-    @Deprecated(since = "6.0.2", forRemoval = true)
-    public static class Neo4jEmbeddedSettings implements Toggleable {
-        /**
-         * The default enable value.
-         */
-        @SuppressWarnings("WeakerAccess")
-        public static final boolean DEFAULT_ENABLED = true;
-
-        /**
-         * The default ephemeral value.
-         */
-        @SuppressWarnings("WeakerAccess")
-        public static final boolean DEFAULT_EPHEMERAL = false;
-
-        /**
-         * The default drop data value.
-         */
-        @SuppressWarnings("WeakerAccess")
-        public static final boolean DEFAULT_DROPDATA = false;
-
-        private Map<String, Object> options = Collections.emptyMap();
-        private String directory;
-        private boolean dropData = DEFAULT_DROPDATA;
-        private boolean ephemeral = DEFAULT_EPHEMERAL;
-        private boolean enabled = DEFAULT_ENABLED;
-
-        /**
-         * @return Whether the embedded sever is enabled
-         */
-        @Override
-        public boolean isEnabled() {
-            return enabled;
-        }
-
-        /**
-         * Default value ({@value #DEFAULT_ENABLED}).
-         * @param enabled enable the server
-         */
-        public void setEnabled(boolean enabled) {
-            this.enabled = enabled;
-        }
-
-        /**
-         * @return Options to pass to the embedded server
-         */
-        public Map<String, Object> getOptions() {
-            return options;
-        }
-
-        /**
-         * @param options The options to pass to the embedded server
-         */
-        public void setOptions(Map<String, Object> options) {
-            if (options != null) {
-                this.options = options;
-            }
-        }
-
-        /**
-         * @return The directory to store embedded data
-         */
-        public Optional<String> getDirectory() {
-            return Optional.ofNullable(directory);
-        }
-
-        /**
-         * @param directory The directory
-         */
-        public void setDirectory(String directory) {
-            this.directory = directory;
-        }
-
-        /**
-         * @return Whether to drop existing data
-         */
-        public boolean isDropData() {
-            return dropData;
-        }
-
-        /**
-         * Default value ({@value #DEFAULT_DROPDATA}).
-         * @param dropData drop the existing data
-         */
-        public void setDropData(boolean dropData) {
-            this.dropData = dropData;
-        }
-
-        /**
-         * @return Whether to create the database in a temp directory and deleted on shutdown
-         */
-        public boolean isEphemeral() {
-            return ephemeral;
-        }
-
-        /**
-         * Default value ({@value #DEFAULT_EPHEMERAL}).
-         * @param ephemeral define the embedded ser as ephemeral
-         */
-        public void setEphemeral(boolean ephemeral) {
-            this.ephemeral = ephemeral;
         }
     }
 }

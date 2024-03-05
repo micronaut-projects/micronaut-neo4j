@@ -1,8 +1,14 @@
 This section documents breaking changes between Micronaut Neo4J versions:
 
-=== Micronaut Neo4J {version}
+=== Micronaut Neo4J 7.0.0
 
-Micronaut Neo4J is based on Neo4j 5.x, which has breaking changes from Neo4j 3.5.x used by previous versions of Micronaut Neo4J.
+The `EmbeddedNeo4jServer` bean that supports using the Neo4j Harness was deprecated in Micronaut Neo4J 6.1.0 in favor of https://java.testcontainers.org/modules/databases/neo4j/[Testcontainers Neo4j].
+Micronaut Neo4J 7.0.0 removed `EmbeddedNeo4jServer` and the relevant configuration properties in api:neo4j.bolt.Neo4jBoltConfiguration[].
+In addition, the `org.neo4j.test:neo4j-harness` library is no longer published with the Micronaut Neo4J BOM.
+
+=== Micronaut Neo4J 6.0.0
+
+Micronaut Neo4J 6.0.0 is based on Neo4j 5.x, which has breaking changes from Neo4j 3.5.x used by previous versions of Micronaut Neo4J.
 
 For more information, refer to the following Neo4j guides:
 

@@ -19,4 +19,5 @@ micronautBuild {
     importMicronautCatalog()
     importMicronautCatalog("micronaut-test-resources")
     importMicronautCatalog("micronaut-validation")
+    importMicronautCatalog("micronaut-grpc")
 }

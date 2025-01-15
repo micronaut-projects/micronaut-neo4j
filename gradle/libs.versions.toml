@@ -15,10 +15,13 @@ javax-validation-api = "2.0.1.Final"
 
 micronaut-test-resources = "2.7.2"
 micronaut-validation = "4.8.0"
+micronaut-grpc = "4.8.0"
+sonatype-scan = "3.0.0"
 
 [libraries]
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
+micronaut-grpc = { module = "io.micronaut.grpc:micronaut-grpc-bom", version.ref = "micronaut-grpc" }
 
 managed-neo4j-java-driver = { module = "org.neo4j.driver:neo4j-java-driver", version.ref = "managed-neo4j-driver" }
 
@@ -29,4 +32,5 @@ javax-validation-api = {group = "javax.validation", name = "validation-api", ver
 
 micronaut-test-resources = { module = "io.micronaut.testresources:micronaut-test-resources-bom", version.ref = "micronaut-test-resources" }
 micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
+sonatype-scan = { module = "org.sonatype.gradle.plugins:scan-gradle-plugin", version.ref = "sonatype-scan" }
 

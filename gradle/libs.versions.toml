@@ -15,7 +15,7 @@ javax-validation-api = "2.0.1.Final"
 
 micronaut-test-resources = "2.8.0"
 micronaut-validation = "4.9.0"
-micronaut-grpc = "4.8.0"
+micronaut-grpc = "4.9.0"
 sonatype-scan = "3.0.0"
 
 [libraries]

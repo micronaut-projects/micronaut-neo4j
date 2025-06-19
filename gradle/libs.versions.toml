@@ -2,7 +2,7 @@
 micronaut-docs = "2.0.0"
 micronaut = "4.9.3"
 micronaut-test = "4.7.0"
-groovy = "4.0.13"
+groovy = "4.0.27"
 spock = "2.3-groovy-4.0"
 
 managed-neo4j-driver = "5.28.5"

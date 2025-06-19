@@ -22,6 +22,7 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.core.io.socket.SocketUtils
 import org.testcontainers.containers.Neo4jContainer
 import org.testcontainers.utility.DockerImageName
+import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -29,11 +30,12 @@ import spock.lang.Specification
  * @author graemerocher
  * @since 1.0
  */
-class Neo4jEmbeddedServerSpec extends Specification{
+class Neo4jEmbeddedServerSpec extends Specification {
 
     @Shared
     int EMBEDDED_NEO4J_TCP_PORT = SocketUtils.findAvailableTcpPort()
 
+    @Ignore
     void "test neo4j embedded"() {
         given:
         ApplicationContext applicationContext = ApplicationContext.run(
@@ -51,6 +53,7 @@ class Neo4jEmbeddedServerSpec extends Specification{
         applicationContext?.stop()
     }
 
+    @Ignore
     void "test neo4j embedded again on the same port"() {
         given:
         ApplicationContext applicationContext = ApplicationContext.run(

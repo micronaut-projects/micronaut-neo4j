@@ -6,6 +6,7 @@ dependencies {
     annotationProcessor(mnValidation.micronaut.validation.processor)
 
     api(libs.managed.neo4j.java.driver)
+    implementation(mnGrpc.protobuf.java) // apply com.google.protobuf:protobuf-java directly because the version brought transitively contains a vulnerable version.
     api(mnValidation.micronaut.validation)
     api(mn.micronaut.retry)
     api(mn.reactor)

@@ -2,3 +2,10 @@ plugins {
     id "io.micronaut.build.internal.neo4j-base"
     id "io.micronaut.build.internal.module"
 }
+
+ossIndexAudit {
+        excludeCoordinates = [
+                // TODO attempt to remove when EmbeddedNeo4jServer and tests that use are removed
+                "org.eclipse.jetty:jetty-http:10.0.26" // no version of Jetty 11 or 10 patched https://ossindex.sonatype.org/component/pkg:maven/org.eclipse.jetty/jetty-http
+        ]
+}

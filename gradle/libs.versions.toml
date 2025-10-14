@@ -1,5 +1,5 @@
 [versions]
-micronaut-docs = "2.0.0"
+micronaut-docs = "3.0.0"
 micronaut = "4.9.12"
 micronaut-test = "4.7.0"
 groovy = "4.0.27"
@@ -16,7 +16,6 @@ javax-validation-api = "2.0.1.Final"
 micronaut-test-resources = "2.8.0"
 micronaut-validation = "4.10.0"
 micronaut-grpc = "4.9.0"
-sonatype-scan = "3.0.0"
 
 [libraries]
 # Core
@@ -32,5 +31,4 @@ javax-validation-api = {group = "javax.validation", name = "validation-api", ver
 
 micronaut-test-resources = { module = "io.micronaut.testresources:micronaut-test-resources-bom", version.ref = "micronaut-test-resources" }
 micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
-sonatype-scan = { module = "org.sonatype.gradle.plugins:scan-gradle-plugin", version.ref = "sonatype-scan" }
 

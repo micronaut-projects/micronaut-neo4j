@@ -18,3 +18,8 @@ dependencies {
     testImplementation(mnTestResources.testcontainers.neo4j)
     testImplementation(mn.micronaut.management)
 }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}

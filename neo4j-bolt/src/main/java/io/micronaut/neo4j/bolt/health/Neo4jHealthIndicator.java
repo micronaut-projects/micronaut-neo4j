@@ -67,9 +67,9 @@ public class Neo4jHealthIndicator implements HealthIndicator {
         try {
 
             Mono<HealthResult> healthResultSingle = Mono.create(emitter -> {
-                AsyncSession session = boltDriver.asyncSession();
+                AsyncSession session = boltDriver.session(AsyncSession.class);
                 CompletionStage<ResultSummary> query =
-                    session.writeTransactionAsync(tx -> tx.runAsync("RETURN 1 AS result").thenCompose(ResultCursor::consumeAsync));
+                    session.executeWriteAsync(tx -> tx.runAsync("RETURN 1 AS result").thenCompose(ResultCursor::consumeAsync));
                 query
                     .handleAsync((resultSummaryStage, throwable) -> {
                         if (throwable != null) {

@@ -1,0 +1,172 @@
+[
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Constructor io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference()",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationSource",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanContextConditional",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataProvider",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.beans.BeanInfo",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataDelegate",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadata",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.QualifiedBeanType",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.type.ArgumentCoercible",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanType",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.$Neo4jBoltConfiguration$Neo4jEmbeddedSettings$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanDefinitionReference",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Constructor io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference()",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationSource",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanContextConditional",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataProvider",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.beans.BeanInfo",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataDelegate",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadata",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.QualifiedBeanType",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.type.ArgumentCoercible",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanType",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.$EmbeddedNeo4jServer$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanDefinitionReference",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Constructor io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer()",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Implemented interface java.util.EventListener",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Implemented interface java.io.Closeable",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Implemented interface io.micronaut.context.event.BeanCreatedEventListener",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.embedded.EmbeddedNeo4jServer",
+    "member": "Implemented interface java.lang.AutoCloseable",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Field DEFAULT_DROPDATA",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Field DEFAULT_ENABLED",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Field DEFAULT_EPHEMERAL",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Constructor io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings()",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  },
+  {
+    "type": "io.micronaut.neo4j.bolt.Neo4jBoltConfiguration$Neo4jEmbeddedSettings",
+    "member": "Implemented interface io.micronaut.core.util.Toggleable",
+    "reason": "Remove deprecated EmbeddedNeo4jServer and neo4j test harness for Micronaut Framework 5"
+  }
+]

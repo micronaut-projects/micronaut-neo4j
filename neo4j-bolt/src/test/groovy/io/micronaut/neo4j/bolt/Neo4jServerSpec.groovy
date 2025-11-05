@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2023 original authors
+ * Copyright 2017-2024 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,50 +26,7 @@ import spock.lang.Ignore
 import spock.lang.Shared
 import spock.lang.Specification
 
-/**
- * @author graemerocher
- * @since 1.0
- */
-class Neo4jEmbeddedServerSpec extends Specification {
-
-    @Shared
-    int EMBEDDED_NEO4J_TCP_PORT = SocketUtils.findAvailableTcpPort()
-
-    @Ignore
-    void "test neo4j embedded"() {
-        given:
-        ApplicationContext applicationContext = ApplicationContext.run(
-                'neo4j.uri':"bolt://localhost:${EMBEDDED_NEO4J_TCP_PORT}",
-                'neo4j.embedded.ephemeral':true
-        )
-
-        when:
-        Driver driver = applicationContext.getBean(Driver)
-
-        then:
-        driver.session().run('MATCH (n) RETURN n').size() == 0
-
-        cleanup:
-        applicationContext?.stop()
-    }
-
-    @Ignore
-    void "test neo4j embedded again on the same port"() {
-        given:
-        ApplicationContext applicationContext = ApplicationContext.run(
-            'neo4j.uri':"bolt://localhost:${EMBEDDED_NEO4J_TCP_PORT}",
-            'neo4j.embedded.ephemeral':true
-        )
-
-        when:
-        Driver driver = applicationContext.getBean(Driver)
-
-        then:
-        driver.session().run('MATCH (n) RETURN n').size() == 0
-
-        cleanup:
-        applicationContext?.stop()
-    }
+class Neo4jServerSpec extends Specification {
 
     void "test neo4j testcontainer"() {
         given:

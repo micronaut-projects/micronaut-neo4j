@@ -9,5 +9,7 @@ micronautBom {
 
         acceptedVersionRegressions.add("neo4j-compat")
         acceptedVersionRegressions.add("neo4j-driver-compat")
+        acceptedVersionRegressions.add("neo4j")
+        acceptedLibraryRegressions.add("neo4j-harness")
     }
 }

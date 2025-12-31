@@ -16,4 +16,6 @@ dependencies {
 
     testCompileOnly(mnValidation.micronaut.validation.processor)
     testImplementation(mn.micronaut.management)
+    testImplementation(platform(mnTest.boms.testcontainers))
+    testImplementation(libs.testcontainers.neo4j)
 }

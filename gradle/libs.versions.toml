@@ -1,5 +1,6 @@
 [versions]
 micronaut = "5.0.0-M6"
+micronaut-test = "5.0.0-M3"
 managed-neo4j-driver = "6.0.2"
 micronaut-validation = "5.0.0-M1"
 micronaut-grpc = "4.12.0"
@@ -10,4 +11,4 @@ micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'mi
 micronaut-grpc = { module = "io.micronaut.grpc:micronaut-grpc-bom", version.ref = "micronaut-grpc" }
 managed-neo4j-java-driver = { module = "org.neo4j.driver:neo4j-java-driver", version.ref = "managed-neo4j-driver" }
 micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
-
+testcontainers-neo4j = { module = "org.testcontainers:testcontainers-neo4j" }

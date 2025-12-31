@@ -196,7 +196,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <div class="block">Default value (<a href="#DEFAULT_RETRYDELAY_SECONDS">1</a>).</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTrustStrategy(org.neo4j.driver.Config.TrustStrategy)" class="member-name-link">setTrustStrategy</a><wbr>(org.neo4j.driver.Config.TrustStrategy&nbsp;trustStrategy)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTrustStrategy(org.neo4j.driver.Config.TrustStrategy)" class="member-name-link">setTrustStrategy</a><wbr>(@Nullable org.neo4j.driver.Config.TrustStrategy&nbsp;trustStrategy)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setUri(java.net.URI)" class="member-name-link">setUri</a><wbr>(@NonNull @NotNull <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a>&nbsp;uri)</code></div>
@@ -287,8 +287,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <li>
 <section class="detail" id="getUri()">
 <h3>getUri</h3>
-<div class="member-signature"><span class="annotations">@NonNull
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">@NonNull <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a></span>&nbsp;<span class="element-name">getUri</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">@NonNull <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a></span>&nbsp;<span class="element-name">getUri</span>()</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>The Neo4j URIs</dd>
@@ -298,7 +297,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <li>
 <section class="detail" id="setUri(java.net.URI)">
 <h3>setUri</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setUri</span><wbr><span class="parameters">(@NonNull @NotNull
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setUri</span><wbr><span class="parameters">(@NotNull
  @NonNull @NotNull <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link">URI</a>&nbsp;uri)</span></div>
 <div class="block">Set a single <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/net/URI.html" title="class or interface in java.net" class="external-link"><code>URI</code></a>.</div>
 <dl class="notes">
@@ -389,8 +388,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <section class="detail" id="setAuthToken(org.neo4j.driver.AuthToken)">
 <h3>setAuthToken</h3>
 <div class="member-signature"><span class="annotations">@Inject
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAuthToken</span><wbr><span class="parameters">(@Nullable
- @Nullable org.neo4j.driver.AuthToken&nbsp;authToken)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAuthToken</span><wbr><span class="parameters">(@Nullable org.neo4j.driver.AuthToken&nbsp;authToken)</span></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>authToken</code> - The <code>AuthToken</code></dd>
@@ -421,8 +419,7 @@ implements <a href="Neo4jBoltSettings.html" title="interface in io.micronaut.neo
 <section class="detail" id="setTrustStrategy(org.neo4j.driver.Config.TrustStrategy)">
 <h3>setTrustStrategy</h3>
 <div class="member-signature"><span class="annotations">@Inject
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setTrustStrategy</span><wbr><span class="parameters">(@Nullable
- org.neo4j.driver.Config.TrustStrategy&nbsp;trustStrategy)</span></div>
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setTrustStrategy</span><wbr><span class="parameters">(@Nullable org.neo4j.driver.Config.TrustStrategy&nbsp;trustStrategy)</span></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>trustStrategy</code> - The <code>Config.TrustStrategy</code></dd>

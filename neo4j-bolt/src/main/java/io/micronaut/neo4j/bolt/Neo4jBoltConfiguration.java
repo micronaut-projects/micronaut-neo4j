@@ -171,7 +171,7 @@ public class Neo4jBoltConfiguration implements Neo4jBoltSettings {
      * @param trustStrategy The {@link org.neo4j.driver.Config.TrustStrategy}
      */
     @Inject
-    public void setTrustStrategy(@Nullable Config.TrustStrategy trustStrategy) {
+    public void setTrustStrategy(Config.@Nullable TrustStrategy trustStrategy) {
         if (trustStrategy != null) {
             this.config.withTrustStrategy(trustStrategy);
         }

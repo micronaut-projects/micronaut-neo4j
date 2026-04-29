@@ -1,8 +1,8 @@
 [versions]
-micronaut = "5.0.0-M22"
+micronaut = "5.0.0-M25"
 micronaut-test = "5.0.0-M3"
 managed-neo4j-driver = "6.0.5"
-micronaut-validation = "5.0.0-M1"
+micronaut-validation = "5.0.0-M2"
 micronaut-grpc = "4.12.0"
 
 [libraries]

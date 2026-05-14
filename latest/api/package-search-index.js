@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"io.micronaut.neo4j.bolt"},{"l":"io.micronaut.neo4j.bolt.condition"},{"l":"io.micronaut.neo4j.bolt.embedded"},{"l":"io.micronaut.neo4j.bolt.health"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"io.micronaut.neo4j.bolt"},{"l":"io.micronaut.neo4j.bolt.condition"},{"l":"io.micronaut.neo4j.bolt.health"},{"l":"io.micronaut.neo4j.info"}];updateSearchResults();

@@ -1,7 +1,7 @@
 [versions]
 micronaut = "5.0.0"
 micronaut-test = "5.0.0"
-managed-neo4j-driver = "6.1.0"
+managed-neo4j-driver = "6.2.0"
 micronaut-validation = "5.0.0"
 micronaut-grpc = "5.0.0"
 

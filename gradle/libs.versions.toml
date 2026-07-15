@@ -1,9 +1,9 @@
 [versions]
-micronaut = "5.1.5"
+micronaut = "5.1.6"
 micronaut-test = "5.0.0"
 managed-neo4j-driver = "6.2.0"
-micronaut-validation = "5.0.0"
-micronaut-grpc = "5.0.0"
+micronaut-validation = "5.1.0"
+micronaut-grpc = "5.1.0"
 
 [libraries]
 # Core

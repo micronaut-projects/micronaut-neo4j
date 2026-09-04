@@ -1,5 +1,5 @@
 [versions]
-micronaut = "5.1.12"
+micronaut = "5.1.13"
 micronaut-test = "5.0.0"
 managed-neo4j-driver = "6.2.0"
 micronaut-validation = "5.1.0"

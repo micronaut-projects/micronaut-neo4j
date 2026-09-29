@@ -5,7 +5,7 @@ The api:neo4j.bolt.Neo4jBoltConfiguration[] also exposes all the options for the
 Below represents an example configuration:
 
 .Customizing the Bolt Configuration
-[source,yaml]
+[configuration]
 ----
 neo4j:
     uri: bolt://localhost
